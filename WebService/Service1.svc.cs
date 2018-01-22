@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace WebService
@@ -28,6 +29,26 @@ namespace WebService
             {
                 db.Configuration.ProxyCreationEnabled = false;
                 db.SPI_CUSTOMERS(c.business_name, c.lastname, c.firstname, c.email, c.phone, c.mobile);
+            }
+
+            return 1;
+        }
+
+        /**
+         * Customer Address
+         */
+
+        public IList<SPS_ADDRESS_CUSTOMERS_Result> GetAddressCustomers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SetAddressCustomer(address_customers a_c)
+        {
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                db.SPI_ADDRESS_CUSTOMERS(a_c.customer_id, a_c.street_number, a_c.street_name, a_c.zip_code, a_c.city, a_c.country);
             }
 
             return 1;
