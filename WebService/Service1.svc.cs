@@ -11,7 +11,6 @@ namespace WebService
         /**
          * Customers
          */
-        
         public List<SPS_CUSTOMERS_Result> GetCustomers()
         {
             List<SPS_CUSTOMERS_Result> items = null;
@@ -38,7 +37,6 @@ namespace WebService
         /**
          * Customer Address
          */
-
         public IList<SPS_ADDRESS_CUSTOMERS_Result> GetAddressCustomers()
         {
             throw new NotImplementedException();
@@ -58,7 +56,6 @@ namespace WebService
         /**
          * Customer Contact
          */
-
         public IList<string> GetContactsCustomers()
         {
             throw new NotImplementedException();
@@ -100,5 +97,31 @@ namespace WebService
             return 1;
         }
 
+        /**
+         * Devices
+         */
+        public IList<SPS_DEVICES_Result> GetDevices()
+        {
+            IList<SPS_DEVICES_Result> items;
+
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                items = db.SPS_DEVICES().ToList();
+            }
+
+            return items.ToList();
+        }
+
+        public int SetDevice(devices d)
+        {
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                db.SPI_DEVICES(d.label, d.IMEI, d.system, d.version, d.mac_address);
+            }
+
+            return 1;
+        }
     }
 }

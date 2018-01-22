@@ -37,11 +37,20 @@ namespace WebService
         /**
          * Employees
          */
-
         [OperationContract]
         IList<SPS_EMPLOYEES_Result> GetEmployees();
 
         [OperationContract]
         int SetEmployee(employees e);
+
+        /**
+         * Devices
+         */
+        [OperationContract]
+        IList<SPS_DEVICES_Result> GetDevices();
+
+        [OperationContract]
+        int SetDevice(devices d);
+
     }
 }
