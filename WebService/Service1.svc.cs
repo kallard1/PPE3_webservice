@@ -73,5 +73,32 @@ namespace WebService
             }
             return 1;
         }
+
+        /**
+         * Employees
+         */
+        public IList<SPS_EMPLOYEES_Result> GetEmployees()
+        {
+            IList<SPS_EMPLOYEES_Result> items;
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                items = db.SPS_EMPLOYEES().ToList();
+            }
+
+            return items.ToList();
+        }
+
+        public int SetEmployee(employees e)
+        {
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                db.SPI_EMPLOYEES(e.lastname, e.firstname, e.social_security_number, e.email, e.role_id, e.phone, e.mobile, e.marital_status, e.birthdate, e.arrival_date, e.bank_account, e.street_number, e.street_name, e.zip_code, e.city, e.country);
+            }
+
+            return 1;
+        }
+
     }
 }

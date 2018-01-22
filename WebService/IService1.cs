@@ -33,5 +33,15 @@ namespace WebService
 
         [OperationContract]
         int SetContactsCustomer(contacts_customers c_c);
+
+        /**
+         * Employees
+         */
+
+        [OperationContract]
+        IList<SPS_EMPLOYEES_Result> GetEmployees();
+
+        [OperationContract]
+        int SetEmployee(employees e);
     }
 }
