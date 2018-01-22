@@ -11,6 +11,7 @@ namespace WebService
         /**
          * Customers
          */
+        
         public List<SPS_CUSTOMERS_Result> GetCustomers()
         {
             List<SPS_CUSTOMERS_Result> items = null;
@@ -51,6 +52,25 @@ namespace WebService
                 db.SPI_ADDRESS_CUSTOMERS(a_c.customer_id, a_c.street_number, a_c.street_name, a_c.zip_code, a_c.city, a_c.country);
             }
 
+            return 1;
+        }
+
+        /**
+         * Customer Contact
+         */
+
+        public IList<string> GetContactsCustomers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SetContactsCustomer(contacts_customers c_c)
+        {
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                db.SPI_CONTACTS_CUSTOMERS(c_c.customer_id, c_c.lastname, c_c.firstname, c_c.email, c_c.phone, c_c.mobile);
+            }
             return 1;
         }
     }

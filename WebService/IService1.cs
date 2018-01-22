@@ -16,10 +16,22 @@ namespace WebService
         [OperationContract]
         int SetCustomer(customers c);
 
+        /**
+         * Customer Address
+         */
         [OperationContract]
         IList<SPS_ADDRESS_CUSTOMERS_Result> GetAddressCustomers();
 
         [OperationContract]
         int SetAddressCustomer(address_customers a_c);
+
+        /**
+         * Customer Contact
+         */
+        [OperationContract]
+        IList<string> GetContactsCustomers();
+
+        [OperationContract]
+        int SetContactsCustomer(contacts_customers c_c);
     }
 }
