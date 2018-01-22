@@ -52,5 +52,14 @@ namespace WebService
         [OperationContract]
         int SetDevice(devices d);
 
+        /**
+         * Interventions
+         */
+        [OperationContract]
+        IList<SPS_INTERVENTIONS_Result> GetInterventions();
+
+        [OperationContract]
+        int SetIntervention(interventions i);
+
     }
 }

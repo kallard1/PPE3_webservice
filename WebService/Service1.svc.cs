@@ -123,5 +123,31 @@ namespace WebService
 
             return 1;
         }
+
+        /**
+         * Interventions
+         */
+        public IList<SPS_INTERVENTIONS_Result> GetInterventions()
+        {
+            IList<SPS_INTERVENTIONS_Result> items;
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                items = db.SPS_INTERVENTIONS().ToList();
+            }
+
+            return items.ToList();
+        }
+
+        public int SetIntervention(interventions i)
+        {
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                db.SPI_INTERVENTIONS(i.employee_id, i.address_customer_id, i.date, i.motive_id, i.report, i.customer_id);
+            }
+
+            return 1;
+        }
     }
 }
