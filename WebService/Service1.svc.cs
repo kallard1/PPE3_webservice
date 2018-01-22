@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 
 namespace WebService
 {
@@ -12,22 +7,30 @@ namespace WebService
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Service1 : IService1
     {
-        public string GetData(int value)
+        /**
+         * Customers
+         */
+        public List<SPS_CUSTOMERS_Result> GetCustomers()
         {
-            return string.Format("You entered: {0}", value);
+            List<SPS_CUSTOMERS_Result> items = null;
+            using (var database = new mygavoltEntities())
+            {
+                database.Configuration.ProxyCreationEnabled = false;
+                items = database.SPS_CUSTOMERS().ToList();
+            }
+
+            return items.ToList();
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public int SetCustomer(customers c)
         {
-            if (composite == null)
+            using (var db = new mygavoltEntities())
             {
-                throw new ArgumentNullException("composite");
+                db.Configuration.ProxyCreationEnabled = false;
+                db.SPI_CUSTOMERS(c.business_name, c.lastname, c.firstname, c.email, c.phone, c.mobile);
             }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+
+            return 1;
         }
     }
 }
