@@ -175,5 +175,31 @@ namespace WebService
 
             return 1;
         }
+
+        /**
+         * Motives
+         */
+        public IList<SPS_MOTIVES_Result> GetMotives()
+        {
+            IList<SPS_MOTIVES_Result> items;
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                items = db.SPS_MOTIVES().ToList();
+            }
+
+            return items.ToList();
+        }
+
+        public int SetMotive(motives m)
+        {
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                db.SPI_MOTIVES(m.label);
+            }
+
+            return 1;
+        }
     }
 }

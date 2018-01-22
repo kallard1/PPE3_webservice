@@ -62,12 +62,21 @@ namespace WebService
         int SetIntervention(interventions i);
 
         /**
-         * Localization
+         * Localizations
          */
         [OperationContract]
         IList<SPS_LOCALIZATION_Result> GetLocalizations();
 
         [OperationContract]
         int SetLocalization(localizations l);
+
+        /**
+         * Motives
+         */
+        [OperationContract]
+        IList<SPS_MOTIVES_Result> GetMotives();
+
+        [OperationContract]
+        int SetMotive(motives m);
     }
 }
