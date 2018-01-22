@@ -149,5 +149,31 @@ namespace WebService
 
             return 1;
         }
+
+        /**
+         * Localization
+         */
+        public IList<SPS_LOCALIZATION_Result> GetLocalizations()
+        {
+            IList<SPS_LOCALIZATION_Result> items;
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                items = db.SPS_LOCALIZATION().ToList();
+            }
+
+            return items.ToList();
+        }
+
+        public int SetLocalization(localizations l)
+        {
+            using (var db = new mygavoltEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                db.SPI_LOCALIZATION(l.device_id, l.employee_id, l.position);
+            }
+
+            return 1;
+        }
     }
 }

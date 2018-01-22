@@ -61,5 +61,13 @@ namespace WebService
         [OperationContract]
         int SetIntervention(interventions i);
 
+        /**
+         * Localization
+         */
+        [OperationContract]
+        IList<SPS_LOCALIZATION_Result> GetLocalizations();
+
+        [OperationContract]
+        int SetLocalization(localizations l);
     }
 }
