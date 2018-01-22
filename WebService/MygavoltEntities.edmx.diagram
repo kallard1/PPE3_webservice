@@ -4,25 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b866b5b492f544529d2494fe94843956" Name="Diagram1" >
-        <EntityTypeShape EntityType="mygavoltModel.address_customers" Width="1.5" PointX="3" PointY="1.25" />
-        <EntityTypeShape EntityType="mygavoltModel.contacts_customers" Width="1.5" PointX="3" PointY="5.375" />
-        <EntityTypeShape EntityType="mygavoltModel.customers" Width="1.5" PointX="0.75" PointY="3" />
-        <EntityTypeShape EntityType="mygavoltModel.devices" Width="1.5" PointX="3" PointY="19.5" />
-        <EntityTypeShape EntityType="mygavoltModel.employees" Width="1.5" PointX="3" PointY="10.25" />
-        <EntityTypeShape EntityType="mygavoltModel.interventions" Width="1.5" PointX="5.25" PointY="2.125" />
-        <EntityTypeShape EntityType="mygavoltModel.localizations" Width="1.5" PointX="5.25" PointY="11.875" />
-        <EntityTypeShape EntityType="mygavoltModel.motives" Width="1.5" PointX="3" PointY="16.625" />
-        <EntityTypeShape EntityType="mygavoltModel.roles" Width="1.5" PointX="0.75" PointY="12.125" />
-        <AssociationConnector Association="mygavoltModel.FK__address_c__custo__5EBF139D" />
-        <AssociationConnector Association="mygavoltModel.FK__intervent__addre__619B8048" />
-        <AssociationConnector Association="mygavoltModel.FK__contacts___custo__5FB337D6" />
-        <AssociationConnector Association="mygavoltModel.FK__intervent__custo__628FA481" />
-        <AssociationConnector Association="mygavoltModel.FK__localizat__devic__656C112C" />
-        <AssociationConnector Association="mygavoltModel.FK__employees__role___60A75C0F" />
-        <AssociationConnector Association="mygavoltModel.FK__intervent__emplo__6383C8BA" />
-        <AssociationConnector Association="mygavoltModel.FK__localizat__emplo__66603565" />
-        <AssociationConnector Association="mygavoltModel.FK__intervent__motiv__6477ECF3" />
+      <Diagram DiagramId="bcf90446441a4c18ab02b857325e7e49" Name="Diagram1">
+        <EntityTypeShape EntityType="mygavoltModel.address_customers" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mygavoltModel.contacts_customers" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mygavoltModel.customers" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="mygavoltModel.devices" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mygavoltModel.employees" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mygavoltModel.interventions" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="mygavoltModel.localizations" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mygavoltModel.motives" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mygavoltModel.roles" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <AssociationConnector Association="mygavoltModel.FK__address_c__custo__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="mygavoltModel.FK__intervent__addre__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="mygavoltModel.FK__contacts___custo__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="mygavoltModel.FK__intervent__custo__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="mygavoltModel.FK__localizat__devic__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="mygavoltModel.FK__employees__role___60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="mygavoltModel.FK__intervent__emplo__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="mygavoltModel.FK__localizat__emplo__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="mygavoltModel.FK__intervent__motiv__6477ECF3" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

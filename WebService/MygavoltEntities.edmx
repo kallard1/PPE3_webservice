@@ -4,20 +4,1515 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="mygavoltModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="mygavoltModelStoreContainer" />
+      <Schema Namespace="mygavoltModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="address_customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="street_number" Type="varchar" MaxLength="4" />
+          <Property Name="street_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="zip_code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+          <Property Name="contact_id" Type="int" />
+        </EntityType>
+        <EntityType Name="contacts_customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="15" />
+          <Property Name="mobile" Type="varchar" MaxLength="15" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="business_name" Type="varchar" MaxLength="255" />
+          <Property Name="lastname" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="15" />
+          <Property Name="mobile" Type="varchar" MaxLength="15" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="devices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="label" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IMEI" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="system" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+          <Property Name="mac_address" Type="varchar" MaxLength="19" Nullable="false" />
+          <Property Name="purchase_date" Type="date" Nullable="false" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="employees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="social_security_number" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="15" />
+          <Property Name="mobile" Type="varchar" MaxLength="15" />
+          <Property Name="marital_status" Type="varchar" MaxLength="20" />
+          <Property Name="birthdate" Type="date" Nullable="false" />
+          <Property Name="arrival_date" Type="date" Nullable="false" />
+          <Property Name="bank_account" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="street_number" Type="varchar" MaxLength="4" />
+          <Property Name="street_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="zip_code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="picture" Type="image" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="interventions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+          <Property Name="address_customer_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="motive_id" Type="int" Nullable="false" />
+          <Property Name="report" Type="text" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="localizations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="device_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+          <Property Name="position" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="motives">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="label" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="label" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__address_c__custo__5EBF139D">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="address_customers" Type="Self.address_customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address_customers">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__contacts___custo__5FB337D6">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="contacts_customers" Type="Self.contacts_customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contacts_customers">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employees__role___60A75C0F">
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__intervent__addre__619B8048">
+          <End Role="address_customers" Type="Self.address_customers" Multiplicity="1" />
+          <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address_customers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="interventions">
+              <PropertyRef Name="address_customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__intervent__custo__628FA481">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="interventions">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__intervent__emplo__6383C8BA">
+          <End Role="employees" Type="Self.employees" Multiplicity="1" />
+          <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="interventions">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__intervent__motiv__6477ECF3">
+          <End Role="motives" Type="Self.motives" Multiplicity="1" />
+          <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="motives">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="interventions">
+              <PropertyRef Name="motive_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__localizat__devic__656C112C">
+          <End Role="devices" Type="Self.devices" Multiplicity="1" />
+          <End Role="localizations" Type="Self.localizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="devices">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="localizations">
+              <PropertyRef Name="device_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__localizat__emplo__66603565">
+          <End Role="employees" Type="Self.employees" Multiplicity="1" />
+          <End Role="localizations" Type="Self.localizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="localizations">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SPD_ADDRESS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPD_CONTACTS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPD_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPD_DEVICES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPD_EMPLOYEES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPD_MOTIVES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPD_ROLES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPI_ADDRESS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COSTOMER_ID" Type="int" Mode="In" />
+          <Parameter Name="STREET_NUMBER" Type="varchar" Mode="In" />
+          <Parameter Name="STREET_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP_COD" Type="varchar" Mode="In" />
+          <Parameter Name="CITY" Type="varchar" Mode="In" />
+          <Parameter Name="COUNTRY" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPI_CONTACTS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CUSTOMER_ID" Type="int" Mode="In" />
+          <Parameter Name="LASTNAME" Type="varchar" Mode="In" />
+          <Parameter Name="FIRSTNAME" Type="varchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="PHONE" Type="varchar" Mode="In" />
+          <Parameter Name="MOBILE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPI_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BUSINESS_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="LAST_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="FIST_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="PHONE" Type="varchar" Mode="In" />
+          <Parameter Name="MOBILE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPI_DEVICES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LABEL" Type="varchar" Mode="In" />
+          <Parameter Name="IMEI" Type="varchar" Mode="In" />
+          <Parameter Name="SYSTEM" Type="varchar" Mode="In" />
+          <Parameter Name="VERSION" Type="varchar" Mode="In" />
+          <Parameter Name="MAC" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPI_EMPLOYEES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LASTNAME" Type="varchar" Mode="In" />
+          <Parameter Name="FIRSTNAME" Type="varchar" Mode="In" />
+          <Parameter Name="SOCIAL_SECURITY_NUMBER" Type="varchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="ROLE_ID" Type="int" Mode="In" />
+          <Parameter Name="PHONE" Type="varchar" Mode="In" />
+          <Parameter Name="MOBILE" Type="varchar" Mode="In" />
+          <Parameter Name="MARITAL_STATUS" Type="varchar" Mode="In" />
+          <Parameter Name="BIRTHDATE" Type="date" Mode="In" />
+          <Parameter Name="ARRIVAL_DATE" Type="date" Mode="In" />
+          <Parameter Name="BANK_ACCOUNT" Type="varchar" Mode="In" />
+          <Parameter Name="STREET_NUMBER" Type="varchar" Mode="In" />
+          <Parameter Name="STREET_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP_CODE" Type="varchar" Mode="In" />
+          <Parameter Name="CITY" Type="varchar" Mode="In" />
+          <Parameter Name="COUNTRY" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPI_INTERVENTIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMPLOYEE" Type="int" Mode="In" />
+          <Parameter Name="ADDRESS" Type="int" Mode="In" />
+          <Parameter Name="DATE" Type="date" Mode="In" />
+          <Parameter Name="MOTIVE" Type="int" Mode="In" />
+          <Parameter Name="REPORT" Type="text" Mode="In" />
+          <Parameter Name="CUSTOMER" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPI_LOCALIZATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DEVICE" Type="int" Mode="In" />
+          <Parameter Name="EMPLOYEE" Type="int" Mode="In" />
+          <Parameter Name="POSITION" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPI_MOTIVES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LABEL" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPI_ROLES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LABEL" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPM_ADDRESS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="STREET_NUMBER" Type="varchar" Mode="In" />
+          <Parameter Name="STREET_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP_COD" Type="varchar" Mode="In" />
+          <Parameter Name="CITY" Type="varchar" Mode="In" />
+          <Parameter Name="COUNTRY" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPM_CONTACTS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="LASTNAME" Type="varchar" Mode="In" />
+          <Parameter Name="FIRSTNAME" Type="varchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="PHONE" Type="varchar" Mode="In" />
+          <Parameter Name="MOBILE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPM_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="BUSINESS_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="LAST_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="FIST_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="PHONE" Type="varchar" Mode="In" />
+          <Parameter Name="MOBILE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPM_DEVICES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="LABEL" Type="varchar" Mode="In" />
+          <Parameter Name="IMEI" Type="varchar" Mode="In" />
+          <Parameter Name="SYSTEM" Type="varchar" Mode="In" />
+          <Parameter Name="VERSION" Type="varchar" Mode="In" />
+          <Parameter Name="MAC" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPM_EMPLOYEES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="LASTNAME" Type="varchar" Mode="In" />
+          <Parameter Name="FIRSTNAME" Type="varchar" Mode="In" />
+          <Parameter Name="SOCIAL_SECURITY_NUMBER" Type="varchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="ROLE_ID" Type="int" Mode="In" />
+          <Parameter Name="PHONE" Type="varchar" Mode="In" />
+          <Parameter Name="MOBILE" Type="varchar" Mode="In" />
+          <Parameter Name="MARITAL_STATUS" Type="varchar" Mode="In" />
+          <Parameter Name="BIRTHDATE" Type="date" Mode="In" />
+          <Parameter Name="ARRIVAL_DATE" Type="date" Mode="In" />
+          <Parameter Name="BANK_ACCOUNT" Type="varchar" Mode="In" />
+          <Parameter Name="STREET_NUMBER" Type="varchar" Mode="In" />
+          <Parameter Name="STREET_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP_CODE" Type="varchar" Mode="In" />
+          <Parameter Name="CITY" Type="varchar" Mode="In" />
+          <Parameter Name="COUNTRY" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPM_INTERVENTIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="EMPLOYEE" Type="int" Mode="In" />
+          <Parameter Name="ADDRESS" Type="int" Mode="In" />
+          <Parameter Name="DATE" Type="date" Mode="In" />
+          <Parameter Name="MOTIVE" Type="int" Mode="In" />
+          <Parameter Name="REPORT" Type="text" Mode="In" />
+          <Parameter Name="CUSTOMER" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPM_LOCALIZATIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="DEVICE" Type="int" Mode="In" />
+          <Parameter Name="EMPLOYEE" Type="int" Mode="In" />
+          <Parameter Name="POSITION" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPM_MOTIVES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="LABEL" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPM_ROLES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="LABEL" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPS_ADDRESS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_CONTACTS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_DEVICES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_EMPLOYEES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_INTERVENTIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_LOCALIZATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_MOTIVES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_ROLES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="mygavoltModelStoreContainer">
+          <EntitySet Name="address_customers" EntityType="Self.address_customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contacts_customers" EntityType="Self.contacts_customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="devices" EntityType="Self.devices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="interventions" EntityType="Self.interventions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localizations" EntityType="Self.localizations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="motives" EntityType="Self.motives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__address_c__custo__5EBF139D" Association="Self.FK__address_c__custo__5EBF139D">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="address_customers" EntitySet="address_customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__contacts___custo__5FB337D6" Association="Self.FK__contacts___custo__5FB337D6">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="contacts_customers" EntitySet="contacts_customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employees__role___60A75C0F" Association="Self.FK__employees__role___60A75C0F">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__intervent__addre__619B8048" Association="Self.FK__intervent__addre__619B8048">
+            <End Role="address_customers" EntitySet="address_customers" />
+            <End Role="interventions" EntitySet="interventions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__intervent__custo__628FA481" Association="Self.FK__intervent__custo__628FA481">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="interventions" EntitySet="interventions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__intervent__emplo__6383C8BA" Association="Self.FK__intervent__emplo__6383C8BA">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="interventions" EntitySet="interventions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__intervent__motiv__6477ECF3" Association="Self.FK__intervent__motiv__6477ECF3">
+            <End Role="motives" EntitySet="motives" />
+            <End Role="interventions" EntitySet="interventions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__localizat__devic__656C112C" Association="Self.FK__localizat__devic__656C112C">
+            <End Role="devices" EntitySet="devices" />
+            <End Role="localizations" EntitySet="localizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__localizat__emplo__66603565" Association="Self.FK__localizat__emplo__66603565">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="localizations" EntitySet="localizations" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mygavoltModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="mygavoltEntities" annotation:LazyLoadingEnabled="true" />
+        <EntityType Name="address_customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="street_number" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="street_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zip_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="contact_id" Type="Int32" />
+          <NavigationProperty Name="customers" Relationship="Self.FK__address_c__custo__5EBF139D" FromRole="address_customers" ToRole="customers" />
+          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__addre__619B8048" FromRole="address_customers" ToRole="interventions" />
+        </EntityType>
+        <EntityType Name="contacts_customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="customers" Relationship="Self.FK__contacts___custo__5FB337D6" FromRole="contacts_customers" ToRole="customers" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="business_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="address_customers" Relationship="Self.FK__address_c__custo__5EBF139D" FromRole="customers" ToRole="address_customers" />
+          <NavigationProperty Name="contacts_customers" Relationship="Self.FK__contacts___custo__5FB337D6" FromRole="customers" ToRole="contacts_customers" />
+          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__custo__628FA481" FromRole="customers" ToRole="interventions" />
+        </EntityType>
+        <EntityType Name="devices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="label" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IMEI" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="system" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mac_address" Type="String" MaxLength="19" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="purchase_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="localizations" Relationship="Self.FK__localizat__devic__656C112C" FromRole="devices" ToRole="localizations" />
+        </EntityType>
+        <EntityType Name="employees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lastname" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="social_security_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="marital_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="birthdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="arrival_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="bank_account" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street_number" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="street_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zip_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="roles" Relationship="Self.FK__employees__role___60A75C0F" FromRole="employees" ToRole="roles" />
+          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__emplo__6383C8BA" FromRole="employees" ToRole="interventions" />
+          <NavigationProperty Name="localizations" Relationship="Self.FK__localizat__emplo__66603565" FromRole="employees" ToRole="localizations" />
+        </EntityType>
+        <EntityType Name="interventions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <Property Name="address_customer_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="motive_id" Type="Int32" Nullable="false" />
+          <Property Name="report" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="address_customers" Relationship="Self.FK__intervent__addre__619B8048" FromRole="interventions" ToRole="address_customers" />
+          <NavigationProperty Name="customers" Relationship="Self.FK__intervent__custo__628FA481" FromRole="interventions" ToRole="customers" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__intervent__emplo__6383C8BA" FromRole="interventions" ToRole="employees" />
+          <NavigationProperty Name="motives" Relationship="Self.FK__intervent__motiv__6477ECF3" FromRole="interventions" ToRole="motives" />
+        </EntityType>
+        <EntityType Name="localizations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="device_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <Property Name="position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="devices" Relationship="Self.FK__localizat__devic__656C112C" FromRole="localizations" ToRole="devices" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__localizat__emplo__66603565" FromRole="localizations" ToRole="employees" />
+        </EntityType>
+        <EntityType Name="motives">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="label" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__motiv__6477ECF3" FromRole="motives" ToRole="interventions" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="label" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__employees__role___60A75C0F" FromRole="roles" ToRole="employees" />
+        </EntityType>
+        <Association Name="FK__address_c__custo__5EBF139D">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="address_customers" Type="Self.address_customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address_customers">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__intervent__addre__619B8048">
+          <End Role="address_customers" Type="Self.address_customers" Multiplicity="1" />
+          <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address_customers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="interventions">
+              <PropertyRef Name="address_customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__contacts___custo__5FB337D6">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="contacts_customers" Type="Self.contacts_customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contacts_customers">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__intervent__custo__628FA481">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="interventions">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__localizat__devic__656C112C">
+          <End Role="devices" Type="Self.devices" Multiplicity="1" />
+          <End Role="localizations" Type="Self.localizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="devices">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="localizations">
+              <PropertyRef Name="device_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employees__role___60A75C0F">
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__intervent__emplo__6383C8BA">
+          <End Role="employees" Type="Self.employees" Multiplicity="1" />
+          <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="interventions">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__localizat__emplo__66603565">
+          <End Role="employees" Type="Self.employees" Multiplicity="1" />
+          <End Role="localizations" Type="Self.localizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="localizations">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__intervent__motiv__6477ECF3">
+          <End Role="motives" Type="Self.motives" Multiplicity="1" />
+          <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="motives">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="interventions">
+              <PropertyRef Name="motive_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mygavoltEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="address_customers" EntityType="Self.address_customers" />
+          <EntitySet Name="contacts_customers" EntityType="Self.contacts_customers" />
+          <EntitySet Name="customers" EntityType="Self.customers" />
+          <EntitySet Name="devices" EntityType="Self.devices" />
+          <EntitySet Name="employees" EntityType="Self.employees" />
+          <EntitySet Name="interventions" EntityType="Self.interventions" />
+          <EntitySet Name="localizations" EntityType="Self.localizations" />
+          <EntitySet Name="motives" EntityType="Self.motives" />
+          <EntitySet Name="roles" EntityType="Self.roles" />
+          <AssociationSet Name="FK__address_c__custo__5EBF139D" Association="Self.FK__address_c__custo__5EBF139D">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="address_customers" EntitySet="address_customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__intervent__addre__619B8048" Association="Self.FK__intervent__addre__619B8048">
+            <End Role="address_customers" EntitySet="address_customers" />
+            <End Role="interventions" EntitySet="interventions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__contacts___custo__5FB337D6" Association="Self.FK__contacts___custo__5FB337D6">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="contacts_customers" EntitySet="contacts_customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__intervent__custo__628FA481" Association="Self.FK__intervent__custo__628FA481">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="interventions" EntitySet="interventions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__localizat__devic__656C112C" Association="Self.FK__localizat__devic__656C112C">
+            <End Role="devices" EntitySet="devices" />
+            <End Role="localizations" EntitySet="localizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employees__role___60A75C0F" Association="Self.FK__employees__role___60A75C0F">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__intervent__emplo__6383C8BA" Association="Self.FK__intervent__emplo__6383C8BA">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="interventions" EntitySet="interventions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__localizat__emplo__66603565" Association="Self.FK__localizat__emplo__66603565">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="localizations" EntitySet="localizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__intervent__motiv__6477ECF3" Association="Self.FK__intervent__motiv__6477ECF3">
+            <End Role="motives" EntitySet="motives" />
+            <End Role="interventions" EntitySet="interventions" />
+          </AssociationSet>
+          <FunctionImport Name="SPD_ADDRESS_CUSTOMERS">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPD_CONTACTS_CUSTOMERS">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPD_CUSTOMERS" />
+          <FunctionImport Name="SPD_DEVICES">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPD_EMPLOYEES">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPD_MOTIVES">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPD_ROLES">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPI_ADDRESS_CUSTOMERS">
+            <Parameter Name="COSTOMER_ID" Mode="In" Type="Int32" />
+            <Parameter Name="STREET_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="STREET_NAME" Mode="In" Type="String" />
+            <Parameter Name="ZIP_COD" Mode="In" Type="String" />
+            <Parameter Name="CITY" Mode="In" Type="String" />
+            <Parameter Name="COUNTRY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPI_CONTACTS_CUSTOMERS">
+            <Parameter Name="CUSTOMER_ID" Mode="In" Type="Int32" />
+            <Parameter Name="LASTNAME" Mode="In" Type="String" />
+            <Parameter Name="FIRSTNAME" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="PHONE" Mode="In" Type="String" />
+            <Parameter Name="MOBILE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPI_CUSTOMERS">
+            <Parameter Name="BUSINESS_NAME" Mode="In" Type="String" />
+            <Parameter Name="LAST_NAME" Mode="In" Type="String" />
+            <Parameter Name="FIST_NAME" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="PHONE" Mode="In" Type="String" />
+            <Parameter Name="MOBILE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPI_DEVICES">
+            <Parameter Name="LABEL" Mode="In" Type="String" />
+            <Parameter Name="IMEI" Mode="In" Type="String" />
+            <Parameter Name="SYSTEM" Mode="In" Type="String" />
+            <Parameter Name="VERSION" Mode="In" Type="String" />
+            <Parameter Name="MAC" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPI_EMPLOYEES">
+            <Parameter Name="LASTNAME" Mode="In" Type="String" />
+            <Parameter Name="FIRSTNAME" Mode="In" Type="String" />
+            <Parameter Name="SOCIAL_SECURITY_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="ROLE_ID" Mode="In" Type="Int32" />
+            <Parameter Name="PHONE" Mode="In" Type="String" />
+            <Parameter Name="MOBILE" Mode="In" Type="String" />
+            <Parameter Name="MARITAL_STATUS" Mode="In" Type="String" />
+            <Parameter Name="BIRTHDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="ARRIVAL_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="BANK_ACCOUNT" Mode="In" Type="String" />
+            <Parameter Name="STREET_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="STREET_NAME" Mode="In" Type="String" />
+            <Parameter Name="ZIP_CODE" Mode="In" Type="String" />
+            <Parameter Name="CITY" Mode="In" Type="String" />
+            <Parameter Name="COUNTRY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPI_INTERVENTIONS">
+            <Parameter Name="EMPLOYEE" Mode="In" Type="Int32" />
+            <Parameter Name="ADDRESS" Mode="In" Type="Int32" />
+            <Parameter Name="DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="MOTIVE" Mode="In" Type="Int32" />
+            <Parameter Name="REPORT" Mode="In" Type="String" />
+            <Parameter Name="CUSTOMER" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPI_LOCALIZATION">
+            <Parameter Name="DEVICE" Mode="In" Type="Int32" />
+            <Parameter Name="EMPLOYEE" Mode="In" Type="Int32" />
+            <Parameter Name="POSITION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPI_MOTIVES">
+            <Parameter Name="LABEL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPI_ROLES">
+            <Parameter Name="LABEL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPM_ADDRESS_CUSTOMERS">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="STREET_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="STREET_NAME" Mode="In" Type="String" />
+            <Parameter Name="ZIP_COD" Mode="In" Type="String" />
+            <Parameter Name="CITY" Mode="In" Type="String" />
+            <Parameter Name="COUNTRY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPM_CONTACTS_CUSTOMERS">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="LASTNAME" Mode="In" Type="String" />
+            <Parameter Name="FIRSTNAME" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="PHONE" Mode="In" Type="String" />
+            <Parameter Name="MOBILE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPM_CUSTOMERS">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="BUSINESS_NAME" Mode="In" Type="String" />
+            <Parameter Name="LAST_NAME" Mode="In" Type="String" />
+            <Parameter Name="FIST_NAME" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="PHONE" Mode="In" Type="String" />
+            <Parameter Name="MOBILE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPM_DEVICES">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="LABEL" Mode="In" Type="String" />
+            <Parameter Name="IMEI" Mode="In" Type="String" />
+            <Parameter Name="SYSTEM" Mode="In" Type="String" />
+            <Parameter Name="VERSION" Mode="In" Type="String" />
+            <Parameter Name="MAC" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPM_EMPLOYEES">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="LASTNAME" Mode="In" Type="String" />
+            <Parameter Name="FIRSTNAME" Mode="In" Type="String" />
+            <Parameter Name="SOCIAL_SECURITY_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="ROLE_ID" Mode="In" Type="Int32" />
+            <Parameter Name="PHONE" Mode="In" Type="String" />
+            <Parameter Name="MOBILE" Mode="In" Type="String" />
+            <Parameter Name="MARITAL_STATUS" Mode="In" Type="String" />
+            <Parameter Name="BIRTHDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="ARRIVAL_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="BANK_ACCOUNT" Mode="In" Type="String" />
+            <Parameter Name="STREET_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="STREET_NAME" Mode="In" Type="String" />
+            <Parameter Name="ZIP_CODE" Mode="In" Type="String" />
+            <Parameter Name="CITY" Mode="In" Type="String" />
+            <Parameter Name="COUNTRY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPM_INTERVENTIONS">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="EMPLOYEE" Mode="In" Type="Int32" />
+            <Parameter Name="ADDRESS" Mode="In" Type="Int32" />
+            <Parameter Name="DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="MOTIVE" Mode="In" Type="Int32" />
+            <Parameter Name="REPORT" Mode="In" Type="String" />
+            <Parameter Name="CUSTOMER" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPM_LOCALIZATIONS">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="DEVICE" Mode="In" Type="Int32" />
+            <Parameter Name="EMPLOYEE" Mode="In" Type="Int32" />
+            <Parameter Name="POSITION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPM_MOTIVES">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="LABEL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPM_ROLES">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="LABEL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPS_ADDRESS_CUSTOMERS" ReturnType="Collection(mygavoltModel.SPS_ADDRESS_CUSTOMERS_Result)" />
+          <FunctionImport Name="SPS_CONTACTS_CUSTOMERS" ReturnType="Collection(mygavoltModel.SPS_CONTACTS_CUSTOMERS_Result)" />
+          <FunctionImport Name="SPS_CUSTOMERS" ReturnType="Collection(mygavoltModel.SPS_CUSTOMERS_Result)" />
+          <FunctionImport Name="SPS_DEVICES" ReturnType="Collection(mygavoltModel.SPS_DEVICES_Result)" />
+          <FunctionImport Name="SPS_EMPLOYEES" ReturnType="Collection(mygavoltModel.SPS_EMPLOYEES_Result)" />
+          <FunctionImport Name="SPS_INTERVENTIONS" ReturnType="Collection(mygavoltModel.SPS_INTERVENTIONS_Result)" />
+          <FunctionImport Name="SPS_LOCALIZATION" ReturnType="Collection(mygavoltModel.SPS_LOCALIZATION_Result)" />
+          <FunctionImport Name="SPS_MOTIVES" ReturnType="Collection(mygavoltModel.SPS_MOTIVES_Result)" />
+          <FunctionImport Name="SPS_ROLES" ReturnType="Collection(mygavoltModel.SPS_ROLES_Result)" />
+        </EntityContainer>
+        <ComplexType Name="SPS_ADDRESS_CUSTOMERS_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="customer_id" Nullable="false" />
+          <Property Type="String" Name="street_number" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="zip_code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="city" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="country" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="contact_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SPS_CONTACTS_CUSTOMERS_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="customer_id" Nullable="false" />
+          <Property Type="String" Name="lastname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="firstname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SPS_CUSTOMERS_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="business_name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="lastname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="firstname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SPS_DEVICES_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="label" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="IMEI" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="system" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="version" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+          <Property Type="String" Name="mac_address" Nullable="false" MaxLength="19" />
+          <Property Type="DateTime" Name="purchase_date" Nullable="false" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SPS_EMPLOYEES_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="lastname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="firstname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="social_security_number" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="role_id" Nullable="false" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="marital_status" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="birthdate" Nullable="false" />
+          <Property Type="DateTime" Name="arrival_date" Nullable="false" />
+          <Property Type="String" Name="bank_account" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="street_number" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="zip_code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="city" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="country" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="picture" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SPS_INTERVENTIONS_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="employee_id" Nullable="false" />
+          <Property Type="Int32" Name="address_customer_id" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="motive_id" Nullable="false" />
+          <Property Type="String" Name="report" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="customer_id" Nullable="false" />
+          <Property Type="Int32" Name="id1" Nullable="false" />
+          <Property Type="String" Name="lastname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="firstname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="social_security_number" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="role_id" Nullable="false" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="marital_status" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="birthdate" Nullable="false" />
+          <Property Type="DateTime" Name="arrival_date" Nullable="false" />
+          <Property Type="String" Name="bank_account" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="street_number" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="zip_code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="city" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="country" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="picture" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="created_at1" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at1" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+          <Property Type="Int32" Name="id2" Nullable="false" />
+          <Property Type="String" Name="business_name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="lastname1" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="firstname1" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="email1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="phone1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobile1" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="created_at2" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at2" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="isActive1" Nullable="true" />
+          <Property Type="Int32" Name="id3" Nullable="false" />
+          <Property Type="Int32" Name="customer_id1" Nullable="false" />
+          <Property Type="String" Name="street_number1" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="street_name1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="zip_code1" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="city1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="country1" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="created_at3" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at3" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="contact_id" Nullable="true" />
+          <Property Type="Int32" Name="id4" Nullable="false" />
+          <Property Type="Int32" Name="customer_id2" Nullable="false" />
+          <Property Type="String" Name="lastname2" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="firstname2" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="email2" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="phone2" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobile2" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="created_at4" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at4" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="id5" Nullable="false" />
+          <Property Type="String" Name="label" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="created_at5" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at5" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SPS_LOCALIZATION_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="device_id" Nullable="false" />
+          <Property Type="Int32" Name="employee_id" Nullable="false" />
+          <Property Type="String" Name="position" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="id1" Nullable="false" />
+          <Property Type="String" Name="label" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="IMEI" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="system" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="version" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="created_at1" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at1" Nullable="false" Precision="23" />
+          <Property Type="String" Name="mac_address" Nullable="false" MaxLength="19" />
+          <Property Type="DateTime" Name="purchase_date" Nullable="false" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+          <Property Type="Int32" Name="id2" Nullable="false" />
+          <Property Type="String" Name="lastname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="firstname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="social_security_number" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="role_id" Nullable="false" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="marital_status" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="birthdate" Nullable="false" />
+          <Property Type="DateTime" Name="arrival_date" Nullable="false" />
+          <Property Type="String" Name="bank_account" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="street_number" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="zip_code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="city" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="country" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="picture" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="created_at2" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at2" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="isActive1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SPS_MOTIVES_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="label" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SPS_ROLES_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="label" Nullable="false" MaxLength="25" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="mygavoltModelStoreContainer" CdmEntityContainer="mygavoltEntities" />
+        <EntityContainerMapping StorageEntityContainer="mygavoltModelStoreContainer" CdmEntityContainer="mygavoltEntities">
+          <EntitySetMapping Name="address_customers">
+            <EntityTypeMapping TypeName="mygavoltModel.address_customers">
+              <MappingFragment StoreEntitySet="address_customers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="street_number" ColumnName="street_number" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contacts_customers">
+            <EntityTypeMapping TypeName="mygavoltModel.contacts_customers">
+              <MappingFragment StoreEntitySet="contacts_customers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="mygavoltModel.customers">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="business_name" ColumnName="business_name" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="devices">
+            <EntityTypeMapping TypeName="mygavoltModel.devices">
+              <MappingFragment StoreEntitySet="devices">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+                <ScalarProperty Name="system" ColumnName="system" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="mac_address" ColumnName="mac_address" />
+                <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="mygavoltModel.employees">
+              <MappingFragment StoreEntitySet="employees">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="social_security_number" ColumnName="social_security_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="arrival_date" ColumnName="arrival_date" />
+                <ScalarProperty Name="bank_account" ColumnName="bank_account" />
+                <ScalarProperty Name="street_number" ColumnName="street_number" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="interventions">
+            <EntityTypeMapping TypeName="mygavoltModel.interventions">
+              <MappingFragment StoreEntitySet="interventions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="address_customer_id" ColumnName="address_customer_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="motive_id" ColumnName="motive_id" />
+                <ScalarProperty Name="report" ColumnName="report" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localizations">
+            <EntityTypeMapping TypeName="mygavoltModel.localizations">
+              <MappingFragment StoreEntitySet="localizations">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="device_id" ColumnName="device_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="motives">
+            <EntityTypeMapping TypeName="mygavoltModel.motives">
+              <MappingFragment StoreEntitySet="motives">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="mygavoltModel.roles">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPD_ADDRESS_CUSTOMERS" FunctionName="mygavoltModel.Store.SPD_ADDRESS_CUSTOMERS" />
+          <FunctionImportMapping FunctionImportName="SPD_CONTACTS_CUSTOMERS" FunctionName="mygavoltModel.Store.SPD_CONTACTS_CUSTOMERS" />
+          <FunctionImportMapping FunctionImportName="SPD_CUSTOMERS" FunctionName="mygavoltModel.Store.SPD_CUSTOMERS" />
+          <FunctionImportMapping FunctionImportName="SPD_DEVICES" FunctionName="mygavoltModel.Store.SPD_DEVICES" />
+          <FunctionImportMapping FunctionImportName="SPD_EMPLOYEES" FunctionName="mygavoltModel.Store.SPD_EMPLOYEES" />
+          <FunctionImportMapping FunctionImportName="SPD_MOTIVES" FunctionName="mygavoltModel.Store.SPD_MOTIVES" />
+          <FunctionImportMapping FunctionImportName="SPD_ROLES" FunctionName="mygavoltModel.Store.SPD_ROLES" />
+          <FunctionImportMapping FunctionImportName="SPI_ADDRESS_CUSTOMERS" FunctionName="mygavoltModel.Store.SPI_ADDRESS_CUSTOMERS" />
+          <FunctionImportMapping FunctionImportName="SPI_CONTACTS_CUSTOMERS" FunctionName="mygavoltModel.Store.SPI_CONTACTS_CUSTOMERS" />
+          <FunctionImportMapping FunctionImportName="SPI_CUSTOMERS" FunctionName="mygavoltModel.Store.SPI_CUSTOMERS" />
+          <FunctionImportMapping FunctionImportName="SPI_DEVICES" FunctionName="mygavoltModel.Store.SPI_DEVICES" />
+          <FunctionImportMapping FunctionImportName="SPI_EMPLOYEES" FunctionName="mygavoltModel.Store.SPI_EMPLOYEES" />
+          <FunctionImportMapping FunctionImportName="SPI_INTERVENTIONS" FunctionName="mygavoltModel.Store.SPI_INTERVENTIONS" />
+          <FunctionImportMapping FunctionImportName="SPI_LOCALIZATION" FunctionName="mygavoltModel.Store.SPI_LOCALIZATION" />
+          <FunctionImportMapping FunctionImportName="SPI_MOTIVES" FunctionName="mygavoltModel.Store.SPI_MOTIVES" />
+          <FunctionImportMapping FunctionImportName="SPI_ROLES" FunctionName="mygavoltModel.Store.SPI_ROLES" />
+          <FunctionImportMapping FunctionImportName="SPM_ADDRESS_CUSTOMERS" FunctionName="mygavoltModel.Store.SPM_ADDRESS_CUSTOMERS" />
+          <FunctionImportMapping FunctionImportName="SPM_CONTACTS_CUSTOMERS" FunctionName="mygavoltModel.Store.SPM_CONTACTS_CUSTOMERS" />
+          <FunctionImportMapping FunctionImportName="SPM_CUSTOMERS" FunctionName="mygavoltModel.Store.SPM_CUSTOMERS" />
+          <FunctionImportMapping FunctionImportName="SPM_DEVICES" FunctionName="mygavoltModel.Store.SPM_DEVICES" />
+          <FunctionImportMapping FunctionImportName="SPM_EMPLOYEES" FunctionName="mygavoltModel.Store.SPM_EMPLOYEES" />
+          <FunctionImportMapping FunctionImportName="SPM_INTERVENTIONS" FunctionName="mygavoltModel.Store.SPM_INTERVENTIONS" />
+          <FunctionImportMapping FunctionImportName="SPM_LOCALIZATIONS" FunctionName="mygavoltModel.Store.SPM_LOCALIZATIONS" />
+          <FunctionImportMapping FunctionImportName="SPM_MOTIVES" FunctionName="mygavoltModel.Store.SPM_MOTIVES" />
+          <FunctionImportMapping FunctionImportName="SPM_ROLES" FunctionName="mygavoltModel.Store.SPM_ROLES" />
+          <FunctionImportMapping FunctionImportName="SPS_ADDRESS_CUSTOMERS" FunctionName="mygavoltModel.Store.SPS_ADDRESS_CUSTOMERS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_ADDRESS_CUSTOMERS_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="street_number" ColumnName="street_number" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_CONTACTS_CUSTOMERS" FunctionName="mygavoltModel.Store.SPS_CONTACTS_CUSTOMERS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_CONTACTS_CUSTOMERS_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_CUSTOMERS" FunctionName="mygavoltModel.Store.SPS_CUSTOMERS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_CUSTOMERS_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="business_name" ColumnName="business_name" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_DEVICES" FunctionName="mygavoltModel.Store.SPS_DEVICES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_DEVICES_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+                <ScalarProperty Name="system" ColumnName="system" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="mac_address" ColumnName="mac_address" />
+                <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_EMPLOYEES" FunctionName="mygavoltModel.Store.SPS_EMPLOYEES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_EMPLOYEES_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="social_security_number" ColumnName="social_security_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="arrival_date" ColumnName="arrival_date" />
+                <ScalarProperty Name="bank_account" ColumnName="bank_account" />
+                <ScalarProperty Name="street_number" ColumnName="street_number" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_INTERVENTIONS" FunctionName="mygavoltModel.Store.SPS_INTERVENTIONS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_INTERVENTIONS_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="address_customer_id" ColumnName="address_customer_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="motive_id" ColumnName="motive_id" />
+                <ScalarProperty Name="report" ColumnName="report" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="social_security_number" ColumnName="social_security_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="arrival_date" ColumnName="arrival_date" />
+                <ScalarProperty Name="bank_account" ColumnName="bank_account" />
+                <ScalarProperty Name="street_number" ColumnName="street_number" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="created_at1" ColumnName="created_at1" />
+                <ScalarProperty Name="updated_at1" ColumnName="updated_at1" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="id2" ColumnName="id2" />
+                <ScalarProperty Name="business_name" ColumnName="business_name" />
+                <ScalarProperty Name="lastname1" ColumnName="lastname1" />
+                <ScalarProperty Name="firstname1" ColumnName="firstname1" />
+                <ScalarProperty Name="email1" ColumnName="email1" />
+                <ScalarProperty Name="phone1" ColumnName="phone1" />
+                <ScalarProperty Name="mobile1" ColumnName="mobile1" />
+                <ScalarProperty Name="created_at2" ColumnName="created_at2" />
+                <ScalarProperty Name="updated_at2" ColumnName="updated_at2" />
+                <ScalarProperty Name="isActive1" ColumnName="isActive1" />
+                <ScalarProperty Name="id3" ColumnName="id3" />
+                <ScalarProperty Name="customer_id1" ColumnName="customer_id1" />
+                <ScalarProperty Name="street_number1" ColumnName="street_number1" />
+                <ScalarProperty Name="street_name1" ColumnName="street_name1" />
+                <ScalarProperty Name="zip_code1" ColumnName="zip_code1" />
+                <ScalarProperty Name="city1" ColumnName="city1" />
+                <ScalarProperty Name="country1" ColumnName="country1" />
+                <ScalarProperty Name="created_at3" ColumnName="created_at3" />
+                <ScalarProperty Name="updated_at3" ColumnName="updated_at3" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+                <ScalarProperty Name="id4" ColumnName="id4" />
+                <ScalarProperty Name="customer_id2" ColumnName="customer_id2" />
+                <ScalarProperty Name="lastname2" ColumnName="lastname2" />
+                <ScalarProperty Name="firstname2" ColumnName="firstname2" />
+                <ScalarProperty Name="email2" ColumnName="email2" />
+                <ScalarProperty Name="phone2" ColumnName="phone2" />
+                <ScalarProperty Name="mobile2" ColumnName="mobile2" />
+                <ScalarProperty Name="created_at4" ColumnName="created_at4" />
+                <ScalarProperty Name="updated_at4" ColumnName="updated_at4" />
+                <ScalarProperty Name="id5" ColumnName="id5" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="created_at5" ColumnName="created_at5" />
+                <ScalarProperty Name="updated_at5" ColumnName="updated_at5" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_LOCALIZATION" FunctionName="mygavoltModel.Store.SPS_LOCALIZATION">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_LOCALIZATION_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="device_id" ColumnName="device_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+                <ScalarProperty Name="system" ColumnName="system" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="created_at1" ColumnName="created_at1" />
+                <ScalarProperty Name="updated_at1" ColumnName="updated_at1" />
+                <ScalarProperty Name="mac_address" ColumnName="mac_address" />
+                <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="id2" ColumnName="id2" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="social_security_number" ColumnName="social_security_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="arrival_date" ColumnName="arrival_date" />
+                <ScalarProperty Name="bank_account" ColumnName="bank_account" />
+                <ScalarProperty Name="street_number" ColumnName="street_number" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="created_at2" ColumnName="created_at2" />
+                <ScalarProperty Name="updated_at2" ColumnName="updated_at2" />
+                <ScalarProperty Name="isActive1" ColumnName="isActive1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_MOTIVES" FunctionName="mygavoltModel.Store.SPS_MOTIVES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_MOTIVES_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_ROLES" FunctionName="mygavoltModel.Store.SPS_ROLES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_ROLES_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

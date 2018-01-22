@@ -72,27 +72,92 @@
   <ItemGroup>
     <Content Include="MygavoltEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MygavoltEntities.edmx</DependentUpon>
       <LastGenOutput>MygavoltEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MygavoltEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MygavoltEntities.edmx</DependentUpon>
+      <LastGenOutput>MygavoltEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="address_customers.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contacts_customers.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="customers.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="devices.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="employees.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="interventions.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="localizations.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="motives.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="MygavoltEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MygavoltEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MygavoltEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="MygavoltEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MygavoltEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="roles.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SPS_ADDRESS_CUSTOMERS_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPS_CONTACTS_CUSTOMERS_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPS_CUSTOMERS_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPS_DEVICES_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPS_EMPLOYEES_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPS_INTERVENTIONS_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPS_LOCALIZATION_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPS_MOTIVES_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPS_ROLES_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -102,9 +167,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MygavoltEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="MygavoltEntities.edmx.diagram">
+    <Content Include="MygavoltEntities.edmx.diagram">
       <DependentUpon>MygavoltEntities.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

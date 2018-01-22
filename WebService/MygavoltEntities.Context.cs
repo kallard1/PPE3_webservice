@@ -12,6 +12,8 @@ namespace WebService
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class mygavoltEntities : DbContext
     {
@@ -25,5 +27,636 @@ namespace WebService
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<address_customers> address_customers { get; set; }
+        public virtual DbSet<contacts_customers> contacts_customers { get; set; }
+        public virtual DbSet<customers> customers { get; set; }
+        public virtual DbSet<devices> devices { get; set; }
+        public virtual DbSet<employees> employees { get; set; }
+        public virtual DbSet<interventions> interventions { get; set; }
+        public virtual DbSet<localizations> localizations { get; set; }
+        public virtual DbSet<motives> motives { get; set; }
+        public virtual DbSet<roles> roles { get; set; }
+    
+        public virtual int SPD_ADDRESS_CUSTOMERS(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPD_ADDRESS_CUSTOMERS", iDParameter);
+        }
+    
+        public virtual int SPD_CONTACTS_CUSTOMERS(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPD_CONTACTS_CUSTOMERS", iDParameter);
+        }
+    
+        public virtual int SPD_CUSTOMERS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPD_CUSTOMERS");
+        }
+    
+        public virtual int SPD_DEVICES(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPD_DEVICES", iDParameter);
+        }
+    
+        public virtual int SPD_EMPLOYEES(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPD_EMPLOYEES", iDParameter);
+        }
+    
+        public virtual int SPD_MOTIVES(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPD_MOTIVES", iDParameter);
+        }
+    
+        public virtual int SPD_ROLES(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPD_ROLES", iDParameter);
+        }
+    
+        public virtual int SPI_ADDRESS_CUSTOMERS(Nullable<int> cOSTOMER_ID, string sTREET_NUMBER, string sTREET_NAME, string zIP_COD, string cITY, string cOUNTRY)
+        {
+            var cOSTOMER_IDParameter = cOSTOMER_ID.HasValue ?
+                new ObjectParameter("COSTOMER_ID", cOSTOMER_ID) :
+                new ObjectParameter("COSTOMER_ID", typeof(int));
+    
+            var sTREET_NUMBERParameter = sTREET_NUMBER != null ?
+                new ObjectParameter("STREET_NUMBER", sTREET_NUMBER) :
+                new ObjectParameter("STREET_NUMBER", typeof(string));
+    
+            var sTREET_NAMEParameter = sTREET_NAME != null ?
+                new ObjectParameter("STREET_NAME", sTREET_NAME) :
+                new ObjectParameter("STREET_NAME", typeof(string));
+    
+            var zIP_CODParameter = zIP_COD != null ?
+                new ObjectParameter("ZIP_COD", zIP_COD) :
+                new ObjectParameter("ZIP_COD", typeof(string));
+    
+            var cITYParameter = cITY != null ?
+                new ObjectParameter("CITY", cITY) :
+                new ObjectParameter("CITY", typeof(string));
+    
+            var cOUNTRYParameter = cOUNTRY != null ?
+                new ObjectParameter("COUNTRY", cOUNTRY) :
+                new ObjectParameter("COUNTRY", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPI_ADDRESS_CUSTOMERS", cOSTOMER_IDParameter, sTREET_NUMBERParameter, sTREET_NAMEParameter, zIP_CODParameter, cITYParameter, cOUNTRYParameter);
+        }
+    
+        public virtual int SPI_CONTACTS_CUSTOMERS(Nullable<int> cUSTOMER_ID, string lASTNAME, string fIRSTNAME, string eMAIL, string pHONE, string mOBILE)
+        {
+            var cUSTOMER_IDParameter = cUSTOMER_ID.HasValue ?
+                new ObjectParameter("CUSTOMER_ID", cUSTOMER_ID) :
+                new ObjectParameter("CUSTOMER_ID", typeof(int));
+    
+            var lASTNAMEParameter = lASTNAME != null ?
+                new ObjectParameter("LASTNAME", lASTNAME) :
+                new ObjectParameter("LASTNAME", typeof(string));
+    
+            var fIRSTNAMEParameter = fIRSTNAME != null ?
+                new ObjectParameter("FIRSTNAME", fIRSTNAME) :
+                new ObjectParameter("FIRSTNAME", typeof(string));
+    
+            var eMAILParameter = eMAIL != null ?
+                new ObjectParameter("EMAIL", eMAIL) :
+                new ObjectParameter("EMAIL", typeof(string));
+    
+            var pHONEParameter = pHONE != null ?
+                new ObjectParameter("PHONE", pHONE) :
+                new ObjectParameter("PHONE", typeof(string));
+    
+            var mOBILEParameter = mOBILE != null ?
+                new ObjectParameter("MOBILE", mOBILE) :
+                new ObjectParameter("MOBILE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPI_CONTACTS_CUSTOMERS", cUSTOMER_IDParameter, lASTNAMEParameter, fIRSTNAMEParameter, eMAILParameter, pHONEParameter, mOBILEParameter);
+        }
+    
+        public virtual int SPI_CUSTOMERS(string bUSINESS_NAME, string lAST_NAME, string fIST_NAME, string eMAIL, string pHONE, string mOBILE)
+        {
+            var bUSINESS_NAMEParameter = bUSINESS_NAME != null ?
+                new ObjectParameter("BUSINESS_NAME", bUSINESS_NAME) :
+                new ObjectParameter("BUSINESS_NAME", typeof(string));
+    
+            var lAST_NAMEParameter = lAST_NAME != null ?
+                new ObjectParameter("LAST_NAME", lAST_NAME) :
+                new ObjectParameter("LAST_NAME", typeof(string));
+    
+            var fIST_NAMEParameter = fIST_NAME != null ?
+                new ObjectParameter("FIST_NAME", fIST_NAME) :
+                new ObjectParameter("FIST_NAME", typeof(string));
+    
+            var eMAILParameter = eMAIL != null ?
+                new ObjectParameter("EMAIL", eMAIL) :
+                new ObjectParameter("EMAIL", typeof(string));
+    
+            var pHONEParameter = pHONE != null ?
+                new ObjectParameter("PHONE", pHONE) :
+                new ObjectParameter("PHONE", typeof(string));
+    
+            var mOBILEParameter = mOBILE != null ?
+                new ObjectParameter("MOBILE", mOBILE) :
+                new ObjectParameter("MOBILE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPI_CUSTOMERS", bUSINESS_NAMEParameter, lAST_NAMEParameter, fIST_NAMEParameter, eMAILParameter, pHONEParameter, mOBILEParameter);
+        }
+    
+        public virtual int SPI_DEVICES(string lABEL, string iMEI, string sYSTEM, string vERSION, string mAC)
+        {
+            var lABELParameter = lABEL != null ?
+                new ObjectParameter("LABEL", lABEL) :
+                new ObjectParameter("LABEL", typeof(string));
+    
+            var iMEIParameter = iMEI != null ?
+                new ObjectParameter("IMEI", iMEI) :
+                new ObjectParameter("IMEI", typeof(string));
+    
+            var sYSTEMParameter = sYSTEM != null ?
+                new ObjectParameter("SYSTEM", sYSTEM) :
+                new ObjectParameter("SYSTEM", typeof(string));
+    
+            var vERSIONParameter = vERSION != null ?
+                new ObjectParameter("VERSION", vERSION) :
+                new ObjectParameter("VERSION", typeof(string));
+    
+            var mACParameter = mAC != null ?
+                new ObjectParameter("MAC", mAC) :
+                new ObjectParameter("MAC", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPI_DEVICES", lABELParameter, iMEIParameter, sYSTEMParameter, vERSIONParameter, mACParameter);
+        }
+    
+        public virtual int SPI_EMPLOYEES(string lASTNAME, string fIRSTNAME, string sOCIAL_SECURITY_NUMBER, string eMAIL, Nullable<int> rOLE_ID, string pHONE, string mOBILE, string mARITAL_STATUS, Nullable<System.DateTime> bIRTHDATE, Nullable<System.DateTime> aRRIVAL_DATE, string bANK_ACCOUNT, string sTREET_NUMBER, string sTREET_NAME, string zIP_CODE, string cITY, string cOUNTRY)
+        {
+            var lASTNAMEParameter = lASTNAME != null ?
+                new ObjectParameter("LASTNAME", lASTNAME) :
+                new ObjectParameter("LASTNAME", typeof(string));
+    
+            var fIRSTNAMEParameter = fIRSTNAME != null ?
+                new ObjectParameter("FIRSTNAME", fIRSTNAME) :
+                new ObjectParameter("FIRSTNAME", typeof(string));
+    
+            var sOCIAL_SECURITY_NUMBERParameter = sOCIAL_SECURITY_NUMBER != null ?
+                new ObjectParameter("SOCIAL_SECURITY_NUMBER", sOCIAL_SECURITY_NUMBER) :
+                new ObjectParameter("SOCIAL_SECURITY_NUMBER", typeof(string));
+    
+            var eMAILParameter = eMAIL != null ?
+                new ObjectParameter("EMAIL", eMAIL) :
+                new ObjectParameter("EMAIL", typeof(string));
+    
+            var rOLE_IDParameter = rOLE_ID.HasValue ?
+                new ObjectParameter("ROLE_ID", rOLE_ID) :
+                new ObjectParameter("ROLE_ID", typeof(int));
+    
+            var pHONEParameter = pHONE != null ?
+                new ObjectParameter("PHONE", pHONE) :
+                new ObjectParameter("PHONE", typeof(string));
+    
+            var mOBILEParameter = mOBILE != null ?
+                new ObjectParameter("MOBILE", mOBILE) :
+                new ObjectParameter("MOBILE", typeof(string));
+    
+            var mARITAL_STATUSParameter = mARITAL_STATUS != null ?
+                new ObjectParameter("MARITAL_STATUS", mARITAL_STATUS) :
+                new ObjectParameter("MARITAL_STATUS", typeof(string));
+    
+            var bIRTHDATEParameter = bIRTHDATE.HasValue ?
+                new ObjectParameter("BIRTHDATE", bIRTHDATE) :
+                new ObjectParameter("BIRTHDATE", typeof(System.DateTime));
+    
+            var aRRIVAL_DATEParameter = aRRIVAL_DATE.HasValue ?
+                new ObjectParameter("ARRIVAL_DATE", aRRIVAL_DATE) :
+                new ObjectParameter("ARRIVAL_DATE", typeof(System.DateTime));
+    
+            var bANK_ACCOUNTParameter = bANK_ACCOUNT != null ?
+                new ObjectParameter("BANK_ACCOUNT", bANK_ACCOUNT) :
+                new ObjectParameter("BANK_ACCOUNT", typeof(string));
+    
+            var sTREET_NUMBERParameter = sTREET_NUMBER != null ?
+                new ObjectParameter("STREET_NUMBER", sTREET_NUMBER) :
+                new ObjectParameter("STREET_NUMBER", typeof(string));
+    
+            var sTREET_NAMEParameter = sTREET_NAME != null ?
+                new ObjectParameter("STREET_NAME", sTREET_NAME) :
+                new ObjectParameter("STREET_NAME", typeof(string));
+    
+            var zIP_CODEParameter = zIP_CODE != null ?
+                new ObjectParameter("ZIP_CODE", zIP_CODE) :
+                new ObjectParameter("ZIP_CODE", typeof(string));
+    
+            var cITYParameter = cITY != null ?
+                new ObjectParameter("CITY", cITY) :
+                new ObjectParameter("CITY", typeof(string));
+    
+            var cOUNTRYParameter = cOUNTRY != null ?
+                new ObjectParameter("COUNTRY", cOUNTRY) :
+                new ObjectParameter("COUNTRY", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPI_EMPLOYEES", lASTNAMEParameter, fIRSTNAMEParameter, sOCIAL_SECURITY_NUMBERParameter, eMAILParameter, rOLE_IDParameter, pHONEParameter, mOBILEParameter, mARITAL_STATUSParameter, bIRTHDATEParameter, aRRIVAL_DATEParameter, bANK_ACCOUNTParameter, sTREET_NUMBERParameter, sTREET_NAMEParameter, zIP_CODEParameter, cITYParameter, cOUNTRYParameter);
+        }
+    
+        public virtual int SPI_INTERVENTIONS(Nullable<int> eMPLOYEE, Nullable<int> aDDRESS, Nullable<System.DateTime> dATE, Nullable<int> mOTIVE, string rEPORT, Nullable<int> cUSTOMER)
+        {
+            var eMPLOYEEParameter = eMPLOYEE.HasValue ?
+                new ObjectParameter("EMPLOYEE", eMPLOYEE) :
+                new ObjectParameter("EMPLOYEE", typeof(int));
+    
+            var aDDRESSParameter = aDDRESS.HasValue ?
+                new ObjectParameter("ADDRESS", aDDRESS) :
+                new ObjectParameter("ADDRESS", typeof(int));
+    
+            var dATEParameter = dATE.HasValue ?
+                new ObjectParameter("DATE", dATE) :
+                new ObjectParameter("DATE", typeof(System.DateTime));
+    
+            var mOTIVEParameter = mOTIVE.HasValue ?
+                new ObjectParameter("MOTIVE", mOTIVE) :
+                new ObjectParameter("MOTIVE", typeof(int));
+    
+            var rEPORTParameter = rEPORT != null ?
+                new ObjectParameter("REPORT", rEPORT) :
+                new ObjectParameter("REPORT", typeof(string));
+    
+            var cUSTOMERParameter = cUSTOMER.HasValue ?
+                new ObjectParameter("CUSTOMER", cUSTOMER) :
+                new ObjectParameter("CUSTOMER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPI_INTERVENTIONS", eMPLOYEEParameter, aDDRESSParameter, dATEParameter, mOTIVEParameter, rEPORTParameter, cUSTOMERParameter);
+        }
+    
+        public virtual int SPI_LOCALIZATION(Nullable<int> dEVICE, Nullable<int> eMPLOYEE, string pOSITION)
+        {
+            var dEVICEParameter = dEVICE.HasValue ?
+                new ObjectParameter("DEVICE", dEVICE) :
+                new ObjectParameter("DEVICE", typeof(int));
+    
+            var eMPLOYEEParameter = eMPLOYEE.HasValue ?
+                new ObjectParameter("EMPLOYEE", eMPLOYEE) :
+                new ObjectParameter("EMPLOYEE", typeof(int));
+    
+            var pOSITIONParameter = pOSITION != null ?
+                new ObjectParameter("POSITION", pOSITION) :
+                new ObjectParameter("POSITION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPI_LOCALIZATION", dEVICEParameter, eMPLOYEEParameter, pOSITIONParameter);
+        }
+    
+        public virtual int SPI_MOTIVES(string lABEL)
+        {
+            var lABELParameter = lABEL != null ?
+                new ObjectParameter("LABEL", lABEL) :
+                new ObjectParameter("LABEL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPI_MOTIVES", lABELParameter);
+        }
+    
+        public virtual int SPI_ROLES(string lABEL)
+        {
+            var lABELParameter = lABEL != null ?
+                new ObjectParameter("LABEL", lABEL) :
+                new ObjectParameter("LABEL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPI_ROLES", lABELParameter);
+        }
+    
+        public virtual int SPM_ADDRESS_CUSTOMERS(Nullable<int> iD, string sTREET_NUMBER, string sTREET_NAME, string zIP_COD, string cITY, string cOUNTRY)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var sTREET_NUMBERParameter = sTREET_NUMBER != null ?
+                new ObjectParameter("STREET_NUMBER", sTREET_NUMBER) :
+                new ObjectParameter("STREET_NUMBER", typeof(string));
+    
+            var sTREET_NAMEParameter = sTREET_NAME != null ?
+                new ObjectParameter("STREET_NAME", sTREET_NAME) :
+                new ObjectParameter("STREET_NAME", typeof(string));
+    
+            var zIP_CODParameter = zIP_COD != null ?
+                new ObjectParameter("ZIP_COD", zIP_COD) :
+                new ObjectParameter("ZIP_COD", typeof(string));
+    
+            var cITYParameter = cITY != null ?
+                new ObjectParameter("CITY", cITY) :
+                new ObjectParameter("CITY", typeof(string));
+    
+            var cOUNTRYParameter = cOUNTRY != null ?
+                new ObjectParameter("COUNTRY", cOUNTRY) :
+                new ObjectParameter("COUNTRY", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_ADDRESS_CUSTOMERS", iDParameter, sTREET_NUMBERParameter, sTREET_NAMEParameter, zIP_CODParameter, cITYParameter, cOUNTRYParameter);
+        }
+    
+        public virtual int SPM_CONTACTS_CUSTOMERS(Nullable<int> iD, string lASTNAME, string fIRSTNAME, string eMAIL, string pHONE, string mOBILE)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var lASTNAMEParameter = lASTNAME != null ?
+                new ObjectParameter("LASTNAME", lASTNAME) :
+                new ObjectParameter("LASTNAME", typeof(string));
+    
+            var fIRSTNAMEParameter = fIRSTNAME != null ?
+                new ObjectParameter("FIRSTNAME", fIRSTNAME) :
+                new ObjectParameter("FIRSTNAME", typeof(string));
+    
+            var eMAILParameter = eMAIL != null ?
+                new ObjectParameter("EMAIL", eMAIL) :
+                new ObjectParameter("EMAIL", typeof(string));
+    
+            var pHONEParameter = pHONE != null ?
+                new ObjectParameter("PHONE", pHONE) :
+                new ObjectParameter("PHONE", typeof(string));
+    
+            var mOBILEParameter = mOBILE != null ?
+                new ObjectParameter("MOBILE", mOBILE) :
+                new ObjectParameter("MOBILE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_CONTACTS_CUSTOMERS", iDParameter, lASTNAMEParameter, fIRSTNAMEParameter, eMAILParameter, pHONEParameter, mOBILEParameter);
+        }
+    
+        public virtual int SPM_CUSTOMERS(Nullable<int> iD, string bUSINESS_NAME, string lAST_NAME, string fIST_NAME, string eMAIL, string pHONE, string mOBILE)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var bUSINESS_NAMEParameter = bUSINESS_NAME != null ?
+                new ObjectParameter("BUSINESS_NAME", bUSINESS_NAME) :
+                new ObjectParameter("BUSINESS_NAME", typeof(string));
+    
+            var lAST_NAMEParameter = lAST_NAME != null ?
+                new ObjectParameter("LAST_NAME", lAST_NAME) :
+                new ObjectParameter("LAST_NAME", typeof(string));
+    
+            var fIST_NAMEParameter = fIST_NAME != null ?
+                new ObjectParameter("FIST_NAME", fIST_NAME) :
+                new ObjectParameter("FIST_NAME", typeof(string));
+    
+            var eMAILParameter = eMAIL != null ?
+                new ObjectParameter("EMAIL", eMAIL) :
+                new ObjectParameter("EMAIL", typeof(string));
+    
+            var pHONEParameter = pHONE != null ?
+                new ObjectParameter("PHONE", pHONE) :
+                new ObjectParameter("PHONE", typeof(string));
+    
+            var mOBILEParameter = mOBILE != null ?
+                new ObjectParameter("MOBILE", mOBILE) :
+                new ObjectParameter("MOBILE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_CUSTOMERS", iDParameter, bUSINESS_NAMEParameter, lAST_NAMEParameter, fIST_NAMEParameter, eMAILParameter, pHONEParameter, mOBILEParameter);
+        }
+    
+        public virtual int SPM_DEVICES(Nullable<int> iD, string lABEL, string iMEI, string sYSTEM, string vERSION, string mAC)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var lABELParameter = lABEL != null ?
+                new ObjectParameter("LABEL", lABEL) :
+                new ObjectParameter("LABEL", typeof(string));
+    
+            var iMEIParameter = iMEI != null ?
+                new ObjectParameter("IMEI", iMEI) :
+                new ObjectParameter("IMEI", typeof(string));
+    
+            var sYSTEMParameter = sYSTEM != null ?
+                new ObjectParameter("SYSTEM", sYSTEM) :
+                new ObjectParameter("SYSTEM", typeof(string));
+    
+            var vERSIONParameter = vERSION != null ?
+                new ObjectParameter("VERSION", vERSION) :
+                new ObjectParameter("VERSION", typeof(string));
+    
+            var mACParameter = mAC != null ?
+                new ObjectParameter("MAC", mAC) :
+                new ObjectParameter("MAC", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_DEVICES", iDParameter, lABELParameter, iMEIParameter, sYSTEMParameter, vERSIONParameter, mACParameter);
+        }
+    
+        public virtual int SPM_EMPLOYEES(Nullable<int> iD, string lASTNAME, string fIRSTNAME, string sOCIAL_SECURITY_NUMBER, string eMAIL, Nullable<int> rOLE_ID, string pHONE, string mOBILE, string mARITAL_STATUS, Nullable<System.DateTime> bIRTHDATE, Nullable<System.DateTime> aRRIVAL_DATE, string bANK_ACCOUNT, string sTREET_NUMBER, string sTREET_NAME, string zIP_CODE, string cITY, string cOUNTRY)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var lASTNAMEParameter = lASTNAME != null ?
+                new ObjectParameter("LASTNAME", lASTNAME) :
+                new ObjectParameter("LASTNAME", typeof(string));
+    
+            var fIRSTNAMEParameter = fIRSTNAME != null ?
+                new ObjectParameter("FIRSTNAME", fIRSTNAME) :
+                new ObjectParameter("FIRSTNAME", typeof(string));
+    
+            var sOCIAL_SECURITY_NUMBERParameter = sOCIAL_SECURITY_NUMBER != null ?
+                new ObjectParameter("SOCIAL_SECURITY_NUMBER", sOCIAL_SECURITY_NUMBER) :
+                new ObjectParameter("SOCIAL_SECURITY_NUMBER", typeof(string));
+    
+            var eMAILParameter = eMAIL != null ?
+                new ObjectParameter("EMAIL", eMAIL) :
+                new ObjectParameter("EMAIL", typeof(string));
+    
+            var rOLE_IDParameter = rOLE_ID.HasValue ?
+                new ObjectParameter("ROLE_ID", rOLE_ID) :
+                new ObjectParameter("ROLE_ID", typeof(int));
+    
+            var pHONEParameter = pHONE != null ?
+                new ObjectParameter("PHONE", pHONE) :
+                new ObjectParameter("PHONE", typeof(string));
+    
+            var mOBILEParameter = mOBILE != null ?
+                new ObjectParameter("MOBILE", mOBILE) :
+                new ObjectParameter("MOBILE", typeof(string));
+    
+            var mARITAL_STATUSParameter = mARITAL_STATUS != null ?
+                new ObjectParameter("MARITAL_STATUS", mARITAL_STATUS) :
+                new ObjectParameter("MARITAL_STATUS", typeof(string));
+    
+            var bIRTHDATEParameter = bIRTHDATE.HasValue ?
+                new ObjectParameter("BIRTHDATE", bIRTHDATE) :
+                new ObjectParameter("BIRTHDATE", typeof(System.DateTime));
+    
+            var aRRIVAL_DATEParameter = aRRIVAL_DATE.HasValue ?
+                new ObjectParameter("ARRIVAL_DATE", aRRIVAL_DATE) :
+                new ObjectParameter("ARRIVAL_DATE", typeof(System.DateTime));
+    
+            var bANK_ACCOUNTParameter = bANK_ACCOUNT != null ?
+                new ObjectParameter("BANK_ACCOUNT", bANK_ACCOUNT) :
+                new ObjectParameter("BANK_ACCOUNT", typeof(string));
+    
+            var sTREET_NUMBERParameter = sTREET_NUMBER != null ?
+                new ObjectParameter("STREET_NUMBER", sTREET_NUMBER) :
+                new ObjectParameter("STREET_NUMBER", typeof(string));
+    
+            var sTREET_NAMEParameter = sTREET_NAME != null ?
+                new ObjectParameter("STREET_NAME", sTREET_NAME) :
+                new ObjectParameter("STREET_NAME", typeof(string));
+    
+            var zIP_CODEParameter = zIP_CODE != null ?
+                new ObjectParameter("ZIP_CODE", zIP_CODE) :
+                new ObjectParameter("ZIP_CODE", typeof(string));
+    
+            var cITYParameter = cITY != null ?
+                new ObjectParameter("CITY", cITY) :
+                new ObjectParameter("CITY", typeof(string));
+    
+            var cOUNTRYParameter = cOUNTRY != null ?
+                new ObjectParameter("COUNTRY", cOUNTRY) :
+                new ObjectParameter("COUNTRY", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_EMPLOYEES", iDParameter, lASTNAMEParameter, fIRSTNAMEParameter, sOCIAL_SECURITY_NUMBERParameter, eMAILParameter, rOLE_IDParameter, pHONEParameter, mOBILEParameter, mARITAL_STATUSParameter, bIRTHDATEParameter, aRRIVAL_DATEParameter, bANK_ACCOUNTParameter, sTREET_NUMBERParameter, sTREET_NAMEParameter, zIP_CODEParameter, cITYParameter, cOUNTRYParameter);
+        }
+    
+        public virtual int SPM_INTERVENTIONS(Nullable<int> iD, Nullable<int> eMPLOYEE, Nullable<int> aDDRESS, Nullable<System.DateTime> dATE, Nullable<int> mOTIVE, string rEPORT, Nullable<int> cUSTOMER)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var eMPLOYEEParameter = eMPLOYEE.HasValue ?
+                new ObjectParameter("EMPLOYEE", eMPLOYEE) :
+                new ObjectParameter("EMPLOYEE", typeof(int));
+    
+            var aDDRESSParameter = aDDRESS.HasValue ?
+                new ObjectParameter("ADDRESS", aDDRESS) :
+                new ObjectParameter("ADDRESS", typeof(int));
+    
+            var dATEParameter = dATE.HasValue ?
+                new ObjectParameter("DATE", dATE) :
+                new ObjectParameter("DATE", typeof(System.DateTime));
+    
+            var mOTIVEParameter = mOTIVE.HasValue ?
+                new ObjectParameter("MOTIVE", mOTIVE) :
+                new ObjectParameter("MOTIVE", typeof(int));
+    
+            var rEPORTParameter = rEPORT != null ?
+                new ObjectParameter("REPORT", rEPORT) :
+                new ObjectParameter("REPORT", typeof(string));
+    
+            var cUSTOMERParameter = cUSTOMER.HasValue ?
+                new ObjectParameter("CUSTOMER", cUSTOMER) :
+                new ObjectParameter("CUSTOMER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_INTERVENTIONS", iDParameter, eMPLOYEEParameter, aDDRESSParameter, dATEParameter, mOTIVEParameter, rEPORTParameter, cUSTOMERParameter);
+        }
+    
+        public virtual int SPM_LOCALIZATIONS(Nullable<int> iD, Nullable<int> dEVICE, Nullable<int> eMPLOYEE, string pOSITION)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var dEVICEParameter = dEVICE.HasValue ?
+                new ObjectParameter("DEVICE", dEVICE) :
+                new ObjectParameter("DEVICE", typeof(int));
+    
+            var eMPLOYEEParameter = eMPLOYEE.HasValue ?
+                new ObjectParameter("EMPLOYEE", eMPLOYEE) :
+                new ObjectParameter("EMPLOYEE", typeof(int));
+    
+            var pOSITIONParameter = pOSITION != null ?
+                new ObjectParameter("POSITION", pOSITION) :
+                new ObjectParameter("POSITION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_LOCALIZATIONS", iDParameter, dEVICEParameter, eMPLOYEEParameter, pOSITIONParameter);
+        }
+    
+        public virtual int SPM_MOTIVES(Nullable<int> iD, string lABEL)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var lABELParameter = lABEL != null ?
+                new ObjectParameter("LABEL", lABEL) :
+                new ObjectParameter("LABEL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_MOTIVES", iDParameter, lABELParameter);
+        }
+    
+        public virtual int SPM_ROLES(Nullable<int> iD, string lABEL)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var lABELParameter = lABEL != null ?
+                new ObjectParameter("LABEL", lABEL) :
+                new ObjectParameter("LABEL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_ROLES", iDParameter, lABELParameter);
+        }
+    
+        public virtual ObjectResult<SPS_ADDRESS_CUSTOMERS_Result> SPS_ADDRESS_CUSTOMERS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_ADDRESS_CUSTOMERS_Result>("SPS_ADDRESS_CUSTOMERS");
+        }
+    
+        public virtual ObjectResult<SPS_CONTACTS_CUSTOMERS_Result> SPS_CONTACTS_CUSTOMERS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_CONTACTS_CUSTOMERS_Result>("SPS_CONTACTS_CUSTOMERS");
+        }
+    
+        public virtual ObjectResult<SPS_CUSTOMERS_Result> SPS_CUSTOMERS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_CUSTOMERS_Result>("SPS_CUSTOMERS");
+        }
+    
+        public virtual ObjectResult<SPS_DEVICES_Result> SPS_DEVICES()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_DEVICES_Result>("SPS_DEVICES");
+        }
+    
+        public virtual ObjectResult<SPS_EMPLOYEES_Result> SPS_EMPLOYEES()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_EMPLOYEES_Result>("SPS_EMPLOYEES");
+        }
+    
+        public virtual ObjectResult<SPS_INTERVENTIONS_Result> SPS_INTERVENTIONS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_INTERVENTIONS_Result>("SPS_INTERVENTIONS");
+        }
+    
+        public virtual ObjectResult<SPS_LOCALIZATION_Result> SPS_LOCALIZATION()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_LOCALIZATION_Result>("SPS_LOCALIZATION");
+        }
+    
+        public virtual ObjectResult<SPS_MOTIVES_Result> SPS_MOTIVES()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_MOTIVES_Result>("SPS_MOTIVES");
+        }
+    
+        public virtual ObjectResult<SPS_ROLES_Result> SPS_ROLES()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_ROLES_Result>("SPS_ROLES");
+        }
     }
 }
