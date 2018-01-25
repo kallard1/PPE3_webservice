@@ -7,76 +7,65 @@ namespace WebService
     [ServiceContract]
     public interface IService1
     {
-        /**
-         * Customer
-         */
+        // Getters 
         [OperationContract]
-        List<SPS_CUSTOMERS_Result> GetCustomers();
+        IList<string> GetAddressCustomers();
 
-        [OperationContract]
-        int SetCustomer(customers c);
-
-        /**
-         * Customer Address
-         */
-        [OperationContract]
-        IList<SPS_ADDRESS_CUSTOMERS_Result> GetAddressCustomers();
-
-        [OperationContract]
-        int SetAddressCustomer(address_customers a_c);
-
-        /**
-         * Customer Contact
-         */
         [OperationContract]
         IList<string> GetContactsCustomers();
 
         [OperationContract]
+        IList<customers> GetCustomers();
+
+        [OperationContract]
+        IList<devices> GetDevices();
+
+        [OperationContract]
+        IList<employees> GetEmployees();
+
+        [OperationContract]
+        IList<interventions> GetInterventions();
+
+        [OperationContract]
+        IList<localizations> GetLocalizations();
+
+        [OperationContract]
+        IList<motives> GetMotives();
+
+        [OperationContract]
+        IList<roles> GetRoles();
+
+        [OperationContract]
+        IList<string> GetNomEmployees();
+
+
+        // Setters
+
+        [OperationContract]
+        int SetAddressCustomer(address_customers a_c);
+        /*
+        [OperationContract]
         int SetContactsCustomer(contacts_customers c_c);
-
-        /**
-         * Employees
-         */
+        */
         [OperationContract]
-        IList<SPS_EMPLOYEES_Result> GetEmployees();
-
-        [OperationContract]
-        int SetEmployee(employees e);
-
-        /**
-         * Devices
-         */
-        [OperationContract]
-        IList<SPS_DEVICES_Result> GetDevices();
+        int SetCustomer(customers c);
 
         [OperationContract]
         int SetDevice(devices d);
 
-        /**
-         * Interventions
-         */
         [OperationContract]
-        IList<SPS_INTERVENTIONS_Result> GetInterventions();
+        int SetEmployee(employees e);
 
         [OperationContract]
         int SetIntervention(interventions i);
 
-        /**
-         * Localizations
-         */
-        [OperationContract]
-        IList<SPS_LOCALIZATION_Result> GetLocalizations();
-
         [OperationContract]
         int SetLocalization(localizations l);
 
-        /**
-         * Motives
-         */
-        [OperationContract]
-        IList<SPS_MOTIVES_Result> GetMotives();
-
         [OperationContract]
         int SetMotive(motives m);
+
+        [OperationContract]
+        int SetRole(roles r);
     }
 }
