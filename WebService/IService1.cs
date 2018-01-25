@@ -39,6 +39,7 @@ namespace WebService
         IList<string> GetNomEmployees();
 
 
+
         // Setters
 
         [OperationContract]
@@ -67,5 +68,54 @@ namespace WebService
 
         [OperationContract]
         int SetRole(roles r);
+
+        //Modify
+
+        [OperationContract]
+        int ModifyEmployee(employees e);
+
+        [OperationContract]
+        int ModifyDevice(devices d);
+
+        [OperationContract]
+        int ModifyCustomer(customers c);
+
+        [OperationContract]
+        int ModifyAddressCustomer(address_customers a_c);
+
+        [OperationContract]
+        int ModifyContactCustomer(contacts_customers c_c);
+
+        [OperationContract]
+        int ModifyIntervention(interventions i);
+
+        [OperationContract]
+        int ModifyLocalization(localizations l);
+
+        [OperationContract]
+        int ModifyRole(roles r);
+
+        //Delete
+
+        [OperationContract]
+        int DeleteEmploye(employees e);
+
+        [OperationContract]
+        int DeleteDevice(devices d);
+
+        [OperationContract]
+        int DeleteCustomer(customers c);
+
+        [OperationContract]
+        int DeleteAddressCustomer(address_customers a_c);
+
+        [OperationContract]
+        int DeleteContactCustomer(contacts_customers c_c);
+
+        [OperationContract]
+        int DeleteMotive(motives m);
+
+        [OperationContract]
+        int DeleteRole(roles r);
     }
 }
