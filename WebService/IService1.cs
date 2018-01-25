@@ -93,6 +93,9 @@ namespace WebService
         int ModifyLocalization(localizations l);
 
         [OperationContract]
+        int ModifyMotive(motives m);
+
+        [OperationContract]
         int ModifyRole(roles r);
 
         //Delete
