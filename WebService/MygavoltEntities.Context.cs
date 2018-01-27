@@ -55,9 +55,13 @@ namespace WebService
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPD_CONTACTS_CUSTOMERS", iDParameter);
         }
     
-        public virtual int SPD_CUSTOMERS()
+        public virtual int SPD_CUSTOMERS(Nullable<int> iD)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPD_CUSTOMERS");
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPD_CUSTOMERS", iDParameter);
         }
     
         public virtual int SPD_DEVICES(Nullable<int> iD)

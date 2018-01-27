@@ -367,7 +367,7 @@ namespace WebService
             using (var database = new mygavoltEntities())
             {
                 database.Configuration.ProxyCreationEnabled = false;
-                database.SPD_CUSTOMERS();
+                database.SPD_CUSTOMERS(c.id);
             }
             return 1;
         }
