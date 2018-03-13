@@ -17,6 +17,7 @@ namespace WebService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public devices()
         {
+            this.employees = new HashSet<employees>();
             this.localizations = new HashSet<localizations>();
         }
     
@@ -31,6 +32,8 @@ namespace WebService
         public System.DateTime purchase_date { get; set; }
         public Nullable<bool> isActive { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<employees> employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<localizations> localizations { get; set; }
     }

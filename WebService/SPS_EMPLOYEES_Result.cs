@@ -34,5 +34,6 @@ namespace WebService
         public System.DateTime created_at { get; set; }
         public System.DateTime updated_at { get; set; }
         public Nullable<bool> isActive { get; set; }
+        public Nullable<int> device_id { get; set; }
     }
 }

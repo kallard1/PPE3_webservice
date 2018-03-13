@@ -22,59 +22,5 @@ namespace WebService
         public System.DateTime created_at { get; set; }
         public System.DateTime updated_at { get; set; }
         public int customer_id { get; set; }
-        public int id1 { get; set; }
-        public string lastname { get; set; }
-        public string firstname { get; set; }
-        public string social_security_number { get; set; }
-        public string email { get; set; }
-        public int role_id { get; set; }
-        public string phone { get; set; }
-        public string mobile { get; set; }
-        public string marital_status { get; set; }
-        public System.DateTime birthdate { get; set; }
-        public System.DateTime arrival_date { get; set; }
-        public string bank_account { get; set; }
-        public string street_number { get; set; }
-        public string street_name { get; set; }
-        public string zip_code { get; set; }
-        public string city { get; set; }
-        public string country { get; set; }
-        public byte[] picture { get; set; }
-        public System.DateTime created_at1 { get; set; }
-        public System.DateTime updated_at1 { get; set; }
-        public Nullable<bool> isActive { get; set; }
-        public int id2 { get; set; }
-        public string business_name { get; set; }
-        public string lastname1 { get; set; }
-        public string firstname1 { get; set; }
-        public string email1 { get; set; }
-        public string phone1 { get; set; }
-        public string mobile1 { get; set; }
-        public System.DateTime created_at2 { get; set; }
-        public System.DateTime updated_at2 { get; set; }
-        public Nullable<bool> isActive1 { get; set; }
-        public int id3 { get; set; }
-        public int customer_id1 { get; set; }
-        public string street_number1 { get; set; }
-        public string street_name1 { get; set; }
-        public string zip_code1 { get; set; }
-        public string city1 { get; set; }
-        public string country1 { get; set; }
-        public System.DateTime created_at3 { get; set; }
-        public System.DateTime updated_at3 { get; set; }
-        public Nullable<int> contact_id { get; set; }
-        public int id4 { get; set; }
-        public int customer_id2 { get; set; }
-        public string lastname2 { get; set; }
-        public string firstname2 { get; set; }
-        public string email2 { get; set; }
-        public string phone2 { get; set; }
-        public string mobile2 { get; set; }
-        public System.DateTime created_at4 { get; set; }
-        public System.DateTime updated_at4 { get; set; }
-        public int id5 { get; set; }
-        public string label { get; set; }
-        public System.DateTime created_at5 { get; set; }
-        public System.DateTime updated_at5 { get; set; }
     }
 }

@@ -42,7 +42,9 @@ namespace WebService
         public System.DateTime created_at { get; set; }
         public System.DateTime updated_at { get; set; }
         public Nullable<bool> isActive { get; set; }
+        public Nullable<int> device_id { get; set; }
     
+        public virtual devices devices { get; set; }
         public virtual roles roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<interventions> interventions { get; set; }
