@@ -134,7 +134,7 @@
           <Property Name="created_at" Type="datetime" Nullable="false" />
           <Property Name="updated_at" Type="datetime" Nullable="false" />
         </EntityType>
-        <Association Name="FK__address_c__custo__65F62111">
+        <Association Name="FK__address_c__custo__5EBF139D">
           <End Role="customers" Type="Self.customers" Multiplicity="1" />
           <End Role="address_customers" Type="Self.address_customers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -146,7 +146,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__contacts___custo__6ABAD62E">
+        <Association Name="FK__contacts___custo__5FB337D6">
           <End Role="customers" Type="Self.customers" Multiplicity="1" />
           <End Role="contacts_customers" Type="Self.contacts_customers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -158,7 +158,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__employees__devic__7FB5F314">
+        <Association Name="FK__employees__devic__09A971A2">
           <End Role="devices" Type="Self.devices" Multiplicity="0..1" />
           <End Role="employees" Type="Self.employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -170,7 +170,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__employees__role___7BE56230">
+        <Association Name="FK__employees__role___60A75C0F">
           <End Role="roles" Type="Self.roles" Multiplicity="1" />
           <End Role="employees" Type="Self.employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -182,7 +182,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__intervent__addre__075714DC">
+        <Association Name="FK__intervent__addre__619B8048">
           <End Role="address_customers" Type="Self.address_customers" Multiplicity="1" />
           <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -194,7 +194,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__intervent__custo__0B27A5C0">
+        <Association Name="FK__intervent__custo__628FA481">
           <End Role="customers" Type="Self.customers" Multiplicity="1" />
           <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -206,7 +206,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__intervent__emplo__0662F0A3">
+        <Association Name="FK__intervent__emplo__6383C8BA">
           <End Role="employees" Type="Self.employees" Multiplicity="1" />
           <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -218,7 +218,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__intervent__motiv__084B3915">
+        <Association Name="FK__intervent__motiv__6477ECF3">
           <End Role="motives" Type="Self.motives" Multiplicity="1" />
           <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -230,7 +230,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__localizat__devic__0E04126B">
+        <Association Name="FK__localizat__devic__656C112C">
           <End Role="devices" Type="Self.devices" Multiplicity="1" />
           <End Role="localizations" Type="Self.localizations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -242,7 +242,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__localizat__emplo__0EF836A4">
+        <Association Name="FK__localizat__emplo__66603565">
           <End Role="employees" Type="Self.employees" Multiplicity="1" />
           <End Role="localizations" Type="Self.localizations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -394,6 +394,7 @@
           <Parameter Name="ZIP_CODE" Type="varchar" Mode="In" />
           <Parameter Name="CITY" Type="varchar" Mode="In" />
           <Parameter Name="COUNTRY" Type="varchar" Mode="In" />
+          <Parameter Name="DEVICE_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="SPM_INTERVENTIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
@@ -422,7 +423,10 @@
         <Function Name="SPS_CONTACTS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPS_CUSTOMERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPS_DEVICES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_DEVICESNOAFFILIATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPS_EMPLOYEES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_EMPLOYEESACTIVE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPS_EMPLOYEESINACTIVE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPS_INTERVENTIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPS_LOCALIZATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPS_MOTIVES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -437,43 +441,43 @@
           <EntitySet Name="localizations" EntityType="Self.localizations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="motives" EntityType="Self.motives" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__address_c__custo__65F62111" Association="Self.FK__address_c__custo__65F62111">
+          <AssociationSet Name="FK__address_c__custo__5EBF139D" Association="Self.FK__address_c__custo__5EBF139D">
             <End Role="customers" EntitySet="customers" />
             <End Role="address_customers" EntitySet="address_customers" />
           </AssociationSet>
-          <AssociationSet Name="FK__contacts___custo__6ABAD62E" Association="Self.FK__contacts___custo__6ABAD62E">
+          <AssociationSet Name="FK__contacts___custo__5FB337D6" Association="Self.FK__contacts___custo__5FB337D6">
             <End Role="customers" EntitySet="customers" />
             <End Role="contacts_customers" EntitySet="contacts_customers" />
           </AssociationSet>
-          <AssociationSet Name="FK__employees__devic__7FB5F314" Association="Self.FK__employees__devic__7FB5F314">
+          <AssociationSet Name="FK__employees__devic__09A971A2" Association="Self.FK__employees__devic__09A971A2">
             <End Role="devices" EntitySet="devices" />
             <End Role="employees" EntitySet="employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__employees__role___7BE56230" Association="Self.FK__employees__role___7BE56230">
+          <AssociationSet Name="FK__employees__role___60A75C0F" Association="Self.FK__employees__role___60A75C0F">
             <End Role="roles" EntitySet="roles" />
             <End Role="employees" EntitySet="employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__intervent__addre__075714DC" Association="Self.FK__intervent__addre__075714DC">
+          <AssociationSet Name="FK__intervent__addre__619B8048" Association="Self.FK__intervent__addre__619B8048">
             <End Role="address_customers" EntitySet="address_customers" />
             <End Role="interventions" EntitySet="interventions" />
           </AssociationSet>
-          <AssociationSet Name="FK__intervent__custo__0B27A5C0" Association="Self.FK__intervent__custo__0B27A5C0">
+          <AssociationSet Name="FK__intervent__custo__628FA481" Association="Self.FK__intervent__custo__628FA481">
             <End Role="customers" EntitySet="customers" />
             <End Role="interventions" EntitySet="interventions" />
           </AssociationSet>
-          <AssociationSet Name="FK__intervent__emplo__0662F0A3" Association="Self.FK__intervent__emplo__0662F0A3">
+          <AssociationSet Name="FK__intervent__emplo__6383C8BA" Association="Self.FK__intervent__emplo__6383C8BA">
             <End Role="employees" EntitySet="employees" />
             <End Role="interventions" EntitySet="interventions" />
           </AssociationSet>
-          <AssociationSet Name="FK__intervent__motiv__084B3915" Association="Self.FK__intervent__motiv__084B3915">
+          <AssociationSet Name="FK__intervent__motiv__6477ECF3" Association="Self.FK__intervent__motiv__6477ECF3">
             <End Role="motives" EntitySet="motives" />
             <End Role="interventions" EntitySet="interventions" />
           </AssociationSet>
-          <AssociationSet Name="FK__localizat__devic__0E04126B" Association="Self.FK__localizat__devic__0E04126B">
+          <AssociationSet Name="FK__localizat__devic__656C112C" Association="Self.FK__localizat__devic__656C112C">
             <End Role="devices" EntitySet="devices" />
             <End Role="localizations" EntitySet="localizations" />
           </AssociationSet>
-          <AssociationSet Name="FK__localizat__emplo__0EF836A4" Association="Self.FK__localizat__emplo__0EF836A4">
+          <AssociationSet Name="FK__localizat__emplo__66603565" Association="Self.FK__localizat__emplo__66603565">
             <End Role="employees" EntitySet="employees" />
             <End Role="localizations" EntitySet="localizations" />
           </AssociationSet>
@@ -497,8 +501,8 @@
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="contact_id" Type="Int32" />
-          <NavigationProperty Name="customers" Relationship="Self.FK__address_c__custo__65F62111" FromRole="address_customers" ToRole="customers" />
-          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__addre__075714DC" FromRole="address_customers" ToRole="interventions" />
+          <NavigationProperty Name="customers" Relationship="Self.FK__address_c__custo__5EBF139D" FromRole="address_customers" ToRole="customers" />
+          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__addre__619B8048" FromRole="address_customers" ToRole="interventions" />
         </EntityType>
         <EntityType Name="contacts_customers">
           <Key>
@@ -513,7 +517,7 @@
           <Property Name="mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="customers" Relationship="Self.FK__contacts___custo__6ABAD62E" FromRole="contacts_customers" ToRole="customers" />
+          <NavigationProperty Name="customers" Relationship="Self.FK__contacts___custo__5FB337D6" FromRole="contacts_customers" ToRole="customers" />
         </EntityType>
         <EntityType Name="customers">
           <Key>
@@ -529,9 +533,9 @@
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="isActive" Type="Boolean" />
-          <NavigationProperty Name="address_customers" Relationship="Self.FK__address_c__custo__65F62111" FromRole="customers" ToRole="address_customers" />
-          <NavigationProperty Name="contacts_customers" Relationship="Self.FK__contacts___custo__6ABAD62E" FromRole="customers" ToRole="contacts_customers" />
-          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__custo__0B27A5C0" FromRole="customers" ToRole="interventions" />
+          <NavigationProperty Name="address_customers" Relationship="Self.FK__address_c__custo__5EBF139D" FromRole="customers" ToRole="address_customers" />
+          <NavigationProperty Name="contacts_customers" Relationship="Self.FK__contacts___custo__5FB337D6" FromRole="customers" ToRole="contacts_customers" />
+          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__custo__628FA481" FromRole="customers" ToRole="interventions" />
         </EntityType>
         <EntityType Name="devices">
           <Key>
@@ -547,8 +551,8 @@
           <Property Name="mac_address" Type="String" MaxLength="19" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="purchase_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="isActive" Type="Boolean" />
-          <NavigationProperty Name="employees" Relationship="Self.FK__employees__devic__7FB5F314" FromRole="devices" ToRole="employees" />
-          <NavigationProperty Name="localizations" Relationship="Self.FK__localizat__devic__0E04126B" FromRole="devices" ToRole="localizations" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__employees__devic__09A971A2" FromRole="devices" ToRole="employees" />
+          <NavigationProperty Name="localizations" Relationship="Self.FK__localizat__devic__656C112C" FromRole="devices" ToRole="localizations" />
         </EntityType>
         <EntityType Name="employees">
           <Key>
@@ -576,10 +580,10 @@
           <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="isActive" Type="Boolean" />
           <Property Name="device_id" Type="Int32" />
-          <NavigationProperty Name="devices" Relationship="Self.FK__employees__devic__7FB5F314" FromRole="employees" ToRole="devices" />
-          <NavigationProperty Name="roles" Relationship="Self.FK__employees__role___7BE56230" FromRole="employees" ToRole="roles" />
-          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__emplo__0662F0A3" FromRole="employees" ToRole="interventions" />
-          <NavigationProperty Name="localizations" Relationship="Self.FK__localizat__emplo__0EF836A4" FromRole="employees" ToRole="localizations" />
+          <NavigationProperty Name="devices" Relationship="Self.FK__employees__devic__09A971A2" FromRole="employees" ToRole="devices" />
+          <NavigationProperty Name="roles" Relationship="Self.FK__employees__role___60A75C0F" FromRole="employees" ToRole="roles" />
+          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__emplo__6383C8BA" FromRole="employees" ToRole="interventions" />
+          <NavigationProperty Name="localizations" Relationship="Self.FK__localizat__emplo__66603565" FromRole="employees" ToRole="localizations" />
         </EntityType>
         <EntityType Name="interventions">
           <Key>
@@ -594,10 +598,10 @@
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="customer_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="address_customers" Relationship="Self.FK__intervent__addre__075714DC" FromRole="interventions" ToRole="address_customers" />
-          <NavigationProperty Name="customers" Relationship="Self.FK__intervent__custo__0B27A5C0" FromRole="interventions" ToRole="customers" />
-          <NavigationProperty Name="employees" Relationship="Self.FK__intervent__emplo__0662F0A3" FromRole="interventions" ToRole="employees" />
-          <NavigationProperty Name="motives" Relationship="Self.FK__intervent__motiv__084B3915" FromRole="interventions" ToRole="motives" />
+          <NavigationProperty Name="address_customers" Relationship="Self.FK__intervent__addre__619B8048" FromRole="interventions" ToRole="address_customers" />
+          <NavigationProperty Name="customers" Relationship="Self.FK__intervent__custo__628FA481" FromRole="interventions" ToRole="customers" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__intervent__emplo__6383C8BA" FromRole="interventions" ToRole="employees" />
+          <NavigationProperty Name="motives" Relationship="Self.FK__intervent__motiv__6477ECF3" FromRole="interventions" ToRole="motives" />
         </EntityType>
         <EntityType Name="localizations">
           <Key>
@@ -609,8 +613,8 @@
           <Property Name="position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="devices" Relationship="Self.FK__localizat__devic__0E04126B" FromRole="localizations" ToRole="devices" />
-          <NavigationProperty Name="employees" Relationship="Self.FK__localizat__emplo__0EF836A4" FromRole="localizations" ToRole="employees" />
+          <NavigationProperty Name="devices" Relationship="Self.FK__localizat__devic__656C112C" FromRole="localizations" ToRole="devices" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__localizat__emplo__66603565" FromRole="localizations" ToRole="employees" />
         </EntityType>
         <EntityType Name="motives">
           <Key>
@@ -620,7 +624,7 @@
           <Property Name="label" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__motiv__084B3915" FromRole="motives" ToRole="interventions" />
+          <NavigationProperty Name="interventions" Relationship="Self.FK__intervent__motiv__6477ECF3" FromRole="motives" ToRole="interventions" />
         </EntityType>
         <EntityType Name="roles">
           <Key>
@@ -630,9 +634,9 @@
           <Property Name="label" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="employees" Relationship="Self.FK__employees__role___7BE56230" FromRole="roles" ToRole="employees" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__employees__role___60A75C0F" FromRole="roles" ToRole="employees" />
         </EntityType>
-        <Association Name="FK__address_c__custo__65F62111">
+        <Association Name="FK__address_c__custo__5EBF139D">
           <End Role="customers" Type="Self.customers" Multiplicity="1" />
           <End Role="address_customers" Type="Self.address_customers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -644,7 +648,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__intervent__addre__075714DC">
+        <Association Name="FK__intervent__addre__619B8048">
           <End Role="address_customers" Type="Self.address_customers" Multiplicity="1" />
           <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -656,7 +660,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__contacts___custo__6ABAD62E">
+        <Association Name="FK__contacts___custo__5FB337D6">
           <End Role="customers" Type="Self.customers" Multiplicity="1" />
           <End Role="contacts_customers" Type="Self.contacts_customers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -668,7 +672,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__intervent__custo__0B27A5C0">
+        <Association Name="FK__intervent__custo__628FA481">
           <End Role="customers" Type="Self.customers" Multiplicity="1" />
           <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -680,7 +684,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__employees__devic__7FB5F314">
+        <Association Name="FK__employees__devic__09A971A2">
           <End Role="devices" Type="Self.devices" Multiplicity="0..1" />
           <End Role="employees" Type="Self.employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -692,7 +696,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__localizat__devic__0E04126B">
+        <Association Name="FK__localizat__devic__656C112C">
           <End Role="devices" Type="Self.devices" Multiplicity="1" />
           <End Role="localizations" Type="Self.localizations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -704,7 +708,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__employees__role___7BE56230">
+        <Association Name="FK__employees__role___60A75C0F">
           <End Role="roles" Type="Self.roles" Multiplicity="1" />
           <End Role="employees" Type="Self.employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -716,7 +720,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__intervent__emplo__0662F0A3">
+        <Association Name="FK__intervent__emplo__6383C8BA">
           <End Role="employees" Type="Self.employees" Multiplicity="1" />
           <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -728,7 +732,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__localizat__emplo__0EF836A4">
+        <Association Name="FK__localizat__emplo__66603565">
           <End Role="employees" Type="Self.employees" Multiplicity="1" />
           <End Role="localizations" Type="Self.localizations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -740,7 +744,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__intervent__motiv__084B3915">
+        <Association Name="FK__intervent__motiv__6477ECF3">
           <End Role="motives" Type="Self.motives" Multiplicity="1" />
           <End Role="interventions" Type="Self.interventions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -762,43 +766,43 @@
           <EntitySet Name="localizations" EntityType="Self.localizations" />
           <EntitySet Name="motives" EntityType="Self.motives" />
           <EntitySet Name="roles" EntityType="Self.roles" />
-          <AssociationSet Name="FK__address_c__custo__65F62111" Association="Self.FK__address_c__custo__65F62111">
+          <AssociationSet Name="FK__address_c__custo__5EBF139D" Association="Self.FK__address_c__custo__5EBF139D">
             <End Role="customers" EntitySet="customers" />
             <End Role="address_customers" EntitySet="address_customers" />
           </AssociationSet>
-          <AssociationSet Name="FK__intervent__addre__075714DC" Association="Self.FK__intervent__addre__075714DC">
+          <AssociationSet Name="FK__intervent__addre__619B8048" Association="Self.FK__intervent__addre__619B8048">
             <End Role="address_customers" EntitySet="address_customers" />
             <End Role="interventions" EntitySet="interventions" />
           </AssociationSet>
-          <AssociationSet Name="FK__contacts___custo__6ABAD62E" Association="Self.FK__contacts___custo__6ABAD62E">
+          <AssociationSet Name="FK__contacts___custo__5FB337D6" Association="Self.FK__contacts___custo__5FB337D6">
             <End Role="customers" EntitySet="customers" />
             <End Role="contacts_customers" EntitySet="contacts_customers" />
           </AssociationSet>
-          <AssociationSet Name="FK__intervent__custo__0B27A5C0" Association="Self.FK__intervent__custo__0B27A5C0">
+          <AssociationSet Name="FK__intervent__custo__628FA481" Association="Self.FK__intervent__custo__628FA481">
             <End Role="customers" EntitySet="customers" />
             <End Role="interventions" EntitySet="interventions" />
           </AssociationSet>
-          <AssociationSet Name="FK__employees__devic__7FB5F314" Association="Self.FK__employees__devic__7FB5F314">
+          <AssociationSet Name="FK__employees__devic__09A971A2" Association="Self.FK__employees__devic__09A971A2">
             <End Role="devices" EntitySet="devices" />
             <End Role="employees" EntitySet="employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__localizat__devic__0E04126B" Association="Self.FK__localizat__devic__0E04126B">
+          <AssociationSet Name="FK__localizat__devic__656C112C" Association="Self.FK__localizat__devic__656C112C">
             <End Role="devices" EntitySet="devices" />
             <End Role="localizations" EntitySet="localizations" />
           </AssociationSet>
-          <AssociationSet Name="FK__employees__role___7BE56230" Association="Self.FK__employees__role___7BE56230">
+          <AssociationSet Name="FK__employees__role___60A75C0F" Association="Self.FK__employees__role___60A75C0F">
             <End Role="roles" EntitySet="roles" />
             <End Role="employees" EntitySet="employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__intervent__emplo__0662F0A3" Association="Self.FK__intervent__emplo__0662F0A3">
+          <AssociationSet Name="FK__intervent__emplo__6383C8BA" Association="Self.FK__intervent__emplo__6383C8BA">
             <End Role="employees" EntitySet="employees" />
             <End Role="interventions" EntitySet="interventions" />
           </AssociationSet>
-          <AssociationSet Name="FK__localizat__emplo__0EF836A4" Association="Self.FK__localizat__emplo__0EF836A4">
+          <AssociationSet Name="FK__localizat__emplo__66603565" Association="Self.FK__localizat__emplo__66603565">
             <End Role="employees" EntitySet="employees" />
             <End Role="localizations" EntitySet="localizations" />
           </AssociationSet>
-          <AssociationSet Name="FK__intervent__motiv__084B3915" Association="Self.FK__intervent__motiv__084B3915">
+          <AssociationSet Name="FK__intervent__motiv__6477ECF3" Association="Self.FK__intervent__motiv__6477ECF3">
             <End Role="motives" EntitySet="motives" />
             <End Role="interventions" EntitySet="interventions" />
           </AssociationSet>
@@ -942,6 +946,7 @@
             <Parameter Name="ZIP_CODE" Mode="In" Type="String" />
             <Parameter Name="CITY" Mode="In" Type="String" />
             <Parameter Name="COUNTRY" Mode="In" Type="String" />
+            <Parameter Name="DEVICE_ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPM_INTERVENTIONS">
             <Parameter Name="ID" Mode="In" Type="Int32" />
@@ -970,7 +975,10 @@
           <FunctionImport Name="SPS_CONTACTS_CUSTOMERS" ReturnType="Collection(mygavoltModel.SPS_CONTACTS_CUSTOMERS_Result)" />
           <FunctionImport Name="SPS_CUSTOMERS" ReturnType="Collection(mygavoltModel.SPS_CUSTOMERS_Result)" />
           <FunctionImport Name="SPS_DEVICES" ReturnType="Collection(mygavoltModel.SPS_DEVICES_Result)" />
+          <FunctionImport Name="SPS_DEVICESNOAFFILIATION" ReturnType="Collection(mygavoltModel.SPS_DEVICESNOAFFILIATION_Result)" />
           <FunctionImport Name="SPS_EMPLOYEES" ReturnType="Collection(mygavoltModel.SPS_EMPLOYEES_Result)" />
+          <FunctionImport Name="SPS_EMPLOYEESACTIVE" ReturnType="Collection(mygavoltModel.SPS_EMPLOYEESACTIVE_Result)" />
+          <FunctionImport Name="SPS_EMPLOYEESINACTIVE" ReturnType="Collection(mygavoltModel.SPS_EMPLOYEESINACTIVE_Result)" />
           <FunctionImport Name="SPS_INTERVENTIONS" ReturnType="Collection(mygavoltModel.SPS_INTERVENTIONS_Result)" />
           <FunctionImport Name="SPS_LOCALIZATION" ReturnType="Collection(mygavoltModel.SPS_LOCALIZATION_Result)" />
           <FunctionImport Name="SPS_MOTIVES" ReturnType="Collection(mygavoltModel.SPS_MOTIVES_Result)" />
@@ -1023,7 +1031,59 @@
           <Property Type="DateTime" Name="purchase_date" Nullable="false" />
           <Property Type="Boolean" Name="isActive" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="SPS_DEVICESNOAFFILIATION_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="label" Nullable="false" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="SPS_EMPLOYEES_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="lastname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="firstname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="social_security_number" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="role_id" Nullable="false" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="marital_status" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="birthdate" Nullable="false" />
+          <Property Type="DateTime" Name="arrival_date" Nullable="false" />
+          <Property Type="String" Name="bank_account" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="street_number" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="zip_code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="city" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="country" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="picture" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+          <Property Type="Int32" Name="device_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SPS_EMPLOYEESACTIVE_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="lastname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="firstname" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="social_security_number" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="role_id" Nullable="false" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="marital_status" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="birthdate" Nullable="false" />
+          <Property Type="DateTime" Name="arrival_date" Nullable="false" />
+          <Property Type="String" Name="bank_account" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="street_number" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="zip_code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="city" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="country" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="picture" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+          <Property Type="Int32" Name="device_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SPS_EMPLOYEESINACTIVE_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="lastname" Nullable="false" MaxLength="75" />
           <Property Type="String" Name="firstname" Nullable="false" MaxLength="75" />
@@ -1310,9 +1370,73 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_DEVICESNOAFFILIATION" FunctionName="mygavoltModel.Store.SPS_DEVICESNOAFFILIATION">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_DEVICESNOAFFILIATION_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPS_EMPLOYEES" FunctionName="mygavoltModel.Store.SPS_EMPLOYEES">
             <ResultMapping>
               <ComplexTypeMapping TypeName="mygavoltModel.SPS_EMPLOYEES_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="social_security_number" ColumnName="social_security_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="arrival_date" ColumnName="arrival_date" />
+                <ScalarProperty Name="bank_account" ColumnName="bank_account" />
+                <ScalarProperty Name="street_number" ColumnName="street_number" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="device_id" ColumnName="device_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_EMPLOYEESACTIVE" FunctionName="mygavoltModel.Store.SPS_EMPLOYEESACTIVE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_EMPLOYEESACTIVE_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="social_security_number" ColumnName="social_security_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="arrival_date" ColumnName="arrival_date" />
+                <ScalarProperty Name="bank_account" ColumnName="bank_account" />
+                <ScalarProperty Name="street_number" ColumnName="street_number" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="device_id" ColumnName="device_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPS_EMPLOYEESINACTIVE" FunctionName="mygavoltModel.Store.SPS_EMPLOYEESINACTIVE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mygavoltModel.SPS_EMPLOYEESINACTIVE_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="lastname" ColumnName="lastname" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />

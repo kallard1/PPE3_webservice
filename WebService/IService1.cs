@@ -38,6 +38,14 @@ namespace WebService
         [OperationContract]
         IList<string> GetNomEmployees();
 
+        [OperationContract]
+        IList<SPS_DEVICESNOAFFILIATION_Result> GetDevicesNoAffiliation();
+
+        [OperationContract]
+        IList<SPS_EMPLOYEESACTIVE_Result> GetEmployeesActive();
+
+        [OperationContract]
+        IList<SPS_EMPLOYEESINACTIVE_Result> GetEmployeesInactives();
 
 
         // Setters

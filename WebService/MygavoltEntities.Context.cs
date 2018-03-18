@@ -465,7 +465,7 @@ namespace WebService
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_DEVICES", iDParameter, lABELParameter, iMEIParameter, sYSTEMParameter, vERSIONParameter, mACParameter);
         }
     
-        public virtual int SPM_EMPLOYEES(Nullable<int> iD, string lASTNAME, string fIRSTNAME, string sOCIAL_SECURITY_NUMBER, string eMAIL, Nullable<int> rOLE_ID, string pHONE, string mOBILE, string mARITAL_STATUS, Nullable<System.DateTime> bIRTHDATE, Nullable<System.DateTime> aRRIVAL_DATE, string bANK_ACCOUNT, string sTREET_NUMBER, string sTREET_NAME, string zIP_CODE, string cITY, string cOUNTRY)
+        public virtual int SPM_EMPLOYEES(Nullable<int> iD, string lASTNAME, string fIRSTNAME, string sOCIAL_SECURITY_NUMBER, string eMAIL, Nullable<int> rOLE_ID, string pHONE, string mOBILE, string mARITAL_STATUS, Nullable<System.DateTime> bIRTHDATE, Nullable<System.DateTime> aRRIVAL_DATE, string bANK_ACCOUNT, string sTREET_NUMBER, string sTREET_NAME, string zIP_CODE, string cITY, string cOUNTRY, Nullable<int> dEVICE_ID)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
@@ -535,7 +535,11 @@ namespace WebService
                 new ObjectParameter("COUNTRY", cOUNTRY) :
                 new ObjectParameter("COUNTRY", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_EMPLOYEES", iDParameter, lASTNAMEParameter, fIRSTNAMEParameter, sOCIAL_SECURITY_NUMBERParameter, eMAILParameter, rOLE_IDParameter, pHONEParameter, mOBILEParameter, mARITAL_STATUSParameter, bIRTHDATEParameter, aRRIVAL_DATEParameter, bANK_ACCOUNTParameter, sTREET_NUMBERParameter, sTREET_NAMEParameter, zIP_CODEParameter, cITYParameter, cOUNTRYParameter);
+            var dEVICE_IDParameter = dEVICE_ID.HasValue ?
+                new ObjectParameter("DEVICE_ID", dEVICE_ID) :
+                new ObjectParameter("DEVICE_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPM_EMPLOYEES", iDParameter, lASTNAMEParameter, fIRSTNAMEParameter, sOCIAL_SECURITY_NUMBERParameter, eMAILParameter, rOLE_IDParameter, pHONEParameter, mOBILEParameter, mARITAL_STATUSParameter, bIRTHDATEParameter, aRRIVAL_DATEParameter, bANK_ACCOUNTParameter, sTREET_NUMBERParameter, sTREET_NAMEParameter, zIP_CODEParameter, cITYParameter, cOUNTRYParameter, dEVICE_IDParameter);
         }
     
         public virtual int SPM_INTERVENTIONS(Nullable<int> iD, Nullable<int> eMPLOYEE, Nullable<int> aDDRESS, Nullable<System.DateTime> dATE, Nullable<int> mOTIVE, string rEPORT, Nullable<int> cUSTOMER)
@@ -638,9 +642,24 @@ namespace WebService
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_DEVICES_Result>("SPS_DEVICES");
         }
     
+        public virtual ObjectResult<SPS_DEVICESNOAFFILIATION_Result> SPS_DEVICESNOAFFILIATION()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_DEVICESNOAFFILIATION_Result>("SPS_DEVICESNOAFFILIATION");
+        }
+    
         public virtual ObjectResult<SPS_EMPLOYEES_Result> SPS_EMPLOYEES()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_EMPLOYEES_Result>("SPS_EMPLOYEES");
+        }
+    
+        public virtual ObjectResult<SPS_EMPLOYEESACTIVE_Result> SPS_EMPLOYEESACTIVE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_EMPLOYEESACTIVE_Result>("SPS_EMPLOYEESACTIVE");
+        }
+    
+        public virtual ObjectResult<SPS_EMPLOYEESINACTIVE_Result> SPS_EMPLOYEESINACTIVE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPS_EMPLOYEESINACTIVE_Result>("SPS_EMPLOYEESINACTIVE");
         }
     
         public virtual ObjectResult<SPS_INTERVENTIONS_Result> SPS_INTERVENTIONS()

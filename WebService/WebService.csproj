@@ -140,7 +140,16 @@
     <Compile Include="SPS_CUSTOMERS_Result.cs">
       <DependentUpon>MygavoltEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPS_DEVICESNOAFFILIATION_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPS_DEVICES_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPS_EMPLOYEESACTIVE_Result.cs">
+      <DependentUpon>MygavoltEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPS_EMPLOYEESINACTIVE_Result.cs">
       <DependentUpon>MygavoltEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="SPS_EMPLOYEES_Result.cs">

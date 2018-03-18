@@ -245,6 +245,42 @@ namespace WebService
             return items.ToList();
         }
 
+        public IList<SPS_DEVICESNOAFFILIATION_Result> GetDevicesNoAffiliation()
+        {
+            IList<SPS_DEVICESNOAFFILIATION_Result> items;
+            using (var database = new mygavoltEntities())
+            {
+                database.Configuration.ProxyCreationEnabled = false;
+                items = database.SPS_DEVICESNOAFFILIATION().ToList();
+            }
+
+            return items.ToList();
+        }
+
+        public IList<SPS_EMPLOYEESACTIVE_Result> GetEmployeesActive()
+        {
+            IList<SPS_EMPLOYEESACTIVE_Result> items;
+            using (var database = new mygavoltEntities())
+            {
+                database.Configuration.ProxyCreationEnabled = false;
+                items = database.SPS_EMPLOYEESACTIVE().ToList();
+            }
+
+            return items.ToList();
+        }
+
+        public IList<SPS_EMPLOYEESINACTIVE_Result> GetEmployeesInactives()
+        {
+            IList<SPS_EMPLOYEESINACTIVE_Result> items;
+            using (var database = new mygavoltEntities())
+            {
+                database.Configuration.ProxyCreationEnabled = false;
+                items = database.SPS_EMPLOYEESINACTIVE().ToList();
+            }
+
+            return items.ToList();
+        }
+
         // ****************************************************************************************************************************//
         // *   Les MODers (attention à ce qu'il soient aussi défini dans IService1.cs)    * //
         // ******************************************************************************** //
@@ -253,7 +289,7 @@ namespace WebService
             using (var database = new mygavoltEntities())
             {
                 database.Configuration.ProxyCreationEnabled = false;
-                database.SPM_EMPLOYEES(e.id, e.lastname, e.firstname, e.social_security_number, e.email, e.role_id, e.phone, e.mobile, e.marital_status, e.birthdate, e.arrival_date, e.bank_account, e.street_number, e.street_name, e.zip_code, e.city, e.country);
+                database.SPM_EMPLOYEES(e.id, e.lastname, e.firstname, e.social_security_number, e.email, e.role_id, e.phone, e.mobile, e.marital_status, e.birthdate, e.arrival_date, e.bank_account, e.street_number, e.street_name, e.zip_code, e.city, e.country, e.device_id);
             }
             return 1;
         }
